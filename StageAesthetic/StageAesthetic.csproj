@@ -77,7 +77,6 @@
     <Folder Include="Variants\Special\Colossus\ReformedAltar\" />
     <Folder Include="Variants\Stage1\VerdantFalls\" />
     <Folder Include="Variants\Stage1\TitanicPlains\" />
-    <Folder Include="Variants\Stage1\SiphonedForest\" />
     <Folder Include="Variants\Stage1\ShatteredAbodes\" />
     <Folder Include="Variants\Stage2\AbandonedAqueduct\" />
     <Folder Include="Variants\Stage2\AphelianSanctuary\" />

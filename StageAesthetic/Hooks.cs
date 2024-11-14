@@ -20,6 +20,7 @@ namespace StageAesthetic
         {
             Assets.CloudRemap = Assets.Load<Shader>("RoR2/Base/Shaders/HGCloudRemap.shader");
             Assets.SnowTopped = Assets.Load<Shader>("RoR2/Base/Shaders/HGSnowTopped.shader"); // who's snow and why are they being topped
+            Assets.GooLakeProfile = Assets.Load<PostProcessProfile>("RoR2/Base/title/PostProcessing/ppSceneGoolake.asset");
             TitleScreen.Init();
             Weather.Init();
             DisplayVariantName = ConfigManager.Bind("General", "Display Variant Name", true, "Display the variant name in the stage text.");

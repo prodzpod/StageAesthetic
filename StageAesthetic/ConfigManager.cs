@@ -44,10 +44,13 @@ namespace StageAesthetic
             var _name = "Stage Aesthetics";
             if (_e != 0) { var e = (Stage)_e; _id = "StageAesthetic.TabID." + _e; _name = "SA: " + e; }
             BaseOption option = null;
-            if (config is ConfigEntry<bool> _bc) option = new CheckBoxOption(_bc, new CheckBoxConfig() { restartRequired = true });
-            else if (config is ConfigEntry<float> _fc) option = new SliderOption(_fc, new SliderConfig() { min = 0, max = 10, restartRequired = true });
-            else if (config is ConfigEntry<EnableConfig> _wc) option = new ChoiceOption(_wc, new ChoiceConfig() { restartRequired = true });
-            else Main.Log.LogWarning("Undefined Config Type " + typeof(T).Name + ", not added to ROO");
+            switch (config)
+            {
+                case ConfigEntry<bool> _bc: option = new CheckBoxOption(_bc, new CheckBoxConfig() { restartRequired = true }); break;
+                case ConfigEntry<float> _fc: option = new SliderOption(_fc, new SliderConfig() { min = 0, max = 10, restartRequired = true }); break;
+                case ConfigEntry<EnableConfig> _wc: option = new ChoiceOption(_wc, new ChoiceConfig() { restartRequired = true }); break;
+                default: Main.Log.LogWarning("Undefined Config Type " + typeof(T).Name + ", not added to ROO"); break;
+            }
             if (option != null) ModSettingsManager.AddOption(option, _id, _name);
             return config;
         }

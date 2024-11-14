@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using HG;
 using static StageAesthetic.Assets;
+using UnityEngine.Rendering.PostProcessing;
 
 namespace StageAesthetic
 {
@@ -12,6 +13,7 @@ namespace StageAesthetic
     {
         public static Shader CloudRemap;
         public static Shader SnowTopped;
+        public static PostProcessProfile GooLakeProfile;
         public static Dictionary<KeyValuePair<string, Type>, object> Cache = [];
         public static Dictionary<KeyValuePair<string, Color32>, Material> CacheRecolor = [];
         public static T Load<T>(string path)
