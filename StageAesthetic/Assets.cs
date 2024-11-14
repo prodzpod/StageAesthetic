@@ -52,23 +52,20 @@ namespace StageAesthetic
                 }
             }
         }
-        public static void TryMeshReplace(MeshRenderer mr, Material material) { if (mr?.sharedMaterial) mr.sharedMaterial = material; }
-        public static void LightReplaceAll(params ReplaceInstance<Light>[] actions)
+        public static void MeshReplaceAll(MeshRenderer mr, Material material)
         {
-            var lightList = UnityEngine.Object.FindObjectsOfType(typeof(Light)) as Light[];
-            foreach (Light l in lightList)
-            {
-                if (!l.gameObject) continue;
-                foreach (var action in actions) if (action.Condition(l)) action.Action(l);
-            }
+            var m = mr.sharedMaterials;
+            for (var i = 0; i < m.Length; i++) m[i] = material;
+            mr.sharedMaterials = m;
         }
-        public static void ParticleReplaceAll(params ReplaceInstance<ParticleSystem>[] actions)
+        public static void TryMeshReplace(MeshRenderer mr, Material material) { if (mr?.sharedMaterial) mr.sharedMaterial = material; }
+        public static void ReplaceAll<T>(params ReplaceInstance<T>[] actions) where T : Component
         {
-            var particleList = UnityEngine.Object.FindObjectsOfType(typeof(ParticleSystem)) as ParticleSystem[];
-            foreach (ParticleSystem ps in particleList)
+            var particleList = UnityEngine.Object.FindObjectsOfType(typeof(T)) as T[];
+            foreach (T x in particleList)
             {
-                if (!ps.gameObject) continue;
-                foreach (var action in actions) if (action.Condition(ps)) action.Action(ps);
+                if (!x.gameObject) continue;
+                foreach (var action in actions) if (action.Condition(x)) action.Action(x);
             }
         }
         public class ReplaceInstance<T>(Func<T, bool> condition, Action<T> action) where T : Component

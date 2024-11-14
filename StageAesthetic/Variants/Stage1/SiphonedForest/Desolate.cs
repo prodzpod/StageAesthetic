@@ -63,7 +63,7 @@ namespace StageAesthetic.Variants.Stage1.SiphonedForest
         }
         public static void DesolateMaterials()
         {
-            Assets.LightReplaceAll([
+            Assets.ReplaceAll<Light>([
                 new(l => !l.name.Contains("Directional Light (SUN)"), light => {
                     light.color = new Color32(53, 56, 148, 255);
                     light.intensity = 5f;
@@ -73,7 +73,7 @@ namespace StageAesthetic.Variants.Stage1.SiphonedForest
                         flickerLight.enabled = false;
                 })
             ]);
-            Assets.ParticleReplaceAll([new(["Fire", "HeatGas"], ps => ps.gameObject.SetActive(false))]);
+            Assets.ReplaceAll<ParticleSystem>([new(["Fire", "HeatGas"], ps => ps.gameObject.SetActive(false))]);
             var siphonedDesolateTerrainMat = Assets.LoadRecolor("RoR2/Base/blackbeach/matBbTerrain.mat", new Color32(174, 153, 129, 255));
             siphonedDesolateTerrainMat.SetFloat("_RedChannelSmoothness", 0.5063887f);
             siphonedDesolateTerrainMat.SetFloat("_RedChannelBias", 1.2f);

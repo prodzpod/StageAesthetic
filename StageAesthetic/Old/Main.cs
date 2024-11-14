@@ -288,10 +288,10 @@ namespace StageAesthetic
 
             distantRoostAbyssalTerrainMat = Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/dampcave/matDCTerrainGiantColumns.mat").WaitForCompletion());
             distantRoostAbyssalTerrainMat.color = new Color32(0, 0, 0, 204);
-            distantRoostAbyssalTerrainMat2 = Object.Instantiate(Addressables.LoadAssetAsync<Material>("").WaitForCompletion());
+            distantRoostAbyssalTerrainMat2 = Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/dampcave/matDCTerrainWalls.mat").WaitForCompletion());
             distantRoostAbyssalTerrainMat2.color = new Color32(0, 0, 0, 135);
             distantRoostAbyssalDetailMat = Addressables.LoadAssetAsync<Material>("RoR2/Base/dampcavesimple/matDCBoulder.mat").WaitForCompletion();
-            distantRoostAbyssalDetailMat2 = Object.Instantiate(Addressables.LoadAssetAsync<Material>("").WaitForCompletion());
+            distantRoostAbyssalDetailMat2 = Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/TitanGoldDuringTP/matGoldHeart.mat").WaitForCompletion());
             distantRoostAbyssalWaterMat = Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/goldshores/matGSWater.mat").WaitForCompletion());
             distantRoostAbyssalWaterMat.color = new Color32(107, 23, 23, 255);
             distantRoostAbyssalWaterMat.shaderKeywords = new string[] { "_BUMPLARGE_ON", "_DISPLACEMENTMODE_OFF", "_DISPLACEMENT_ON", "_DISTORTIONQUALITY_HIGH", "_EMISSION", "_FOAM_ON", "_NORMALMAP" };

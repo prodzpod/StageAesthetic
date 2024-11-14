@@ -75,13 +75,8 @@
     <Folder Include="Variants\Special\Bonus\" />
     <Folder Include="Variants\Special\Bonus\VoidLocus\" />
     <Folder Include="Variants\Special\Colossus\ReformedAltar\" />
-    <Folder Include="Variants\Stage1\VerdantFalls\" />
-    <Folder Include="Variants\Stage1\TitanicPlains\" />
-    <Folder Include="Variants\Stage1\ShatteredAbodes\" />
-    <Folder Include="Variants\Stage2\AbandonedAqueduct\" />
     <Folder Include="Variants\Stage2\AphelianSanctuary\" />
     <Folder Include="Variants\Stage2\DryBasin\" />
-    <Folder Include="Variants\Stage2\WetlandAspect\" />
     <Folder Include="Variants\Stage3\FogboundLagoon\" />
     <Folder Include="Variants\Stage3\SulfurPools\" />
     <Folder Include="Variants\Stage3\ScorchedAcres\" />

@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-using UnityEngine;
-using UnityEngine.AddressableAssets;
+﻿using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
 namespace StageAesthetic.Variants.Stage1.ShatteredAbodes
@@ -51,7 +49,7 @@ namespace StageAesthetic.Variants.Stage1.ShatteredAbodes
         {
             Assets.MeshReplaceAll([
                 new(["Grass", "Fern"], mr => Object.Destroy(mr.gameObject)),
-                new(["HouseBuried", "LVTerrain", "LVArc_StormOutlook", "BuriedHouse"], mr => { if (mr.sharedMaterials.Length == 2) { mr.sharedMaterials = [terrainMat, detailMat2]; }),
+                new(["HouseBuried", "LVTerrain", "LVArc_StormOutlook", "BuriedHouse"], mr => { if (mr.sharedMaterials.Length == 2) mr.sharedMaterials = [terrainMat, detailMat2]; }),
                 new(["LVTerrainToggle", "LVTerrainFar", "Dune", "BrokenAltar", "LVTerrainBackground"], mr => Assets.TryMeshReplace(mr, terrainMat)),
                 new(["LVArc_Temple", "LVArc_Houses", "LVArc_CliffCave", "LVArc_Bridge", "LVArc_BrokenPillar"], mr => { if (mr.sharedMaterials.Length == 2) mr.sharedMaterials = [detailMat2, terrainMat]; }),
                 new(["Pillar"], mr => Assets.TryMeshReplace(mr, detailMat2)),
