@@ -84,7 +84,6 @@ namespace StageAesthetic.Variants.Stage1
                     }
                 }
             }
-            AddSnow(SnowType.Light, -10f);
             // s.GetChild(19).GetChild(0).localPosition = new Vector3(0, 0, -10); something moved/broke with this
 
             GameObject.Find("HOLDER: Grass").SetActive(false);

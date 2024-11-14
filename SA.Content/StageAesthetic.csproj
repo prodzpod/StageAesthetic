@@ -29,6 +29,10 @@
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
       <DebugType>portable</DebugType>
     </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Remove="Old\**\*.cs" />
+    </ItemGroup>
 	
   <ItemGroup>
     <PackageReference Include="BepInEx.Core" Version="5.*" />
@@ -40,6 +44,9 @@
   </ItemGroup>
 	
   <ItemGroup>
+	  <Reference Include="FblAssembly">
+	    <HintPath>..\..\libs\FblAssembly-nstrip.dll</HintPath>
+	  </Reference>
 	  <Reference Include="FHCSharp">
 		  <HintPath>..\..\libs\FHCSharp-nstrip.dll</HintPath>
 	  </Reference>
@@ -49,6 +56,47 @@
 	  <Reference Include="Unity.Postprocessing.Runtime">
 		  <HintPath>..\..\libs\Unity.Postprocessing.Runtime-nstrip.dll</HintPath>
 	  </Reference>
+  </ItemGroup>
+	
+  <ItemGroup>
+    <Folder Include="Variants\Special\Endings\Commencement\" />
+    <Folder Include="Variants\Special\Bonus\ForgottenHaven\" />
+    <Folder Include="Variants\Special\Bonus\BulwarksAmbry\" />
+    <Folder Include="Variants\Special\Bonus\Bazaar\" />
+    <Folder Include="Variants\Special\Bonus\GildedCoast\" />
+    <Folder Include="Variants\Special\Endings\MomentFractured\" />
+    <Folder Include="Variants\Special\Endings\MomentWhole\" />
+    <Folder Include="Variants\Special\Endings\MomentHaunted\" />
+    <Folder Include="Variants\Special\Colossus\" />
+    <Folder Include="Variants\Special\Endings\" />
+    <Folder Include="Variants\Special\Endings\Planetarium\" />
+    <Folder Include="Variants\Special\Colossus\PrimeMeridian\" />
+    <Folder Include="Variants\Special\Colossus\TreebornColony\" />
+    <Folder Include="Variants\Special\Bonus\" />
+    <Folder Include="Variants\Special\Bonus\VoidLocus\" />
+    <Folder Include="Variants\Special\Colossus\ReformedAltar\" />
+    <Folder Include="Variants\Stage1\VerdantFalls\" />
+    <Folder Include="Variants\Stage1\TitanicPlains\" />
+    <Folder Include="Variants\Stage1\SiphonedForest\" />
+    <Folder Include="Variants\Stage1\ShatteredAbodes\" />
+    <Folder Include="Variants\Stage2\AbandonedAqueduct\" />
+    <Folder Include="Variants\Stage2\AphelianSanctuary\" />
+    <Folder Include="Variants\Stage2\DryBasin\" />
+    <Folder Include="Variants\Stage2\WetlandAspect\" />
+    <Folder Include="Variants\Stage3\FogboundLagoon\" />
+    <Folder Include="Variants\Stage3\SulfurPools\" />
+    <Folder Include="Variants\Stage3\ScorchedAcres\" />
+    <Folder Include="Variants\Stage3\RallypointDelta\" />
+    <Folder Include="Variants\Stage4\AbyssalDepths\" />
+    <Folder Include="Variants\Stage4\SunderedGrove\" />
+    <Folder Include="Variants\Stage4\SirensCall\" />
+    <Folder Include="Variants\Stage5\HelminthHatchery\" />
+    <Folder Include="Variants\Stage5\SlumberingSatellite\" />
+    <Folder Include="Variants\Stage5\SkyMeadow\" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <None Include="Old\**\*.cs" />
   </ItemGroup>
 
 </Project>

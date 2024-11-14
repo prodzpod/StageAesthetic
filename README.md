@@ -1,11 +1,10 @@
 this mod is part of a port of [HIFU](https://hifuror2.carrd.co/)'s pair of mods for SotS. This will be taken down<sub>(deprecated)</sub> once HIFU wishes to continue the project themselves.  
 ![Permission](https://raw.githubusercontent.com/prodzpod/StageAesthetic/refs/heads/main/permission.png)
 
----
-<br><br>
-
-[![ko-fi](https://raw.githubusercontent.com/prodzpod/StageAesthetic/refs/heads/main/kofi.png)](https://ko-fi.com/F1F65KGH9)  
+[![ko-fi](https://raw.githubusercontent.com/prodzpod/StageAesthetic/refs/heads/main/kofi.png)](https://ko-fi.com/F1F65KGH9)
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/prodzpod)  
 [Modding Server ![discord server](https://raw.githubusercontent.com/prodzpod/StageAesthetic/refs/heads/main/widegladline2.png  'Click Me'   )](https://discord.gg/sgv4zyhbse  'Click Me'   )
+<br><br>
 
 # Overview
 - All normal stages except for Commencement (so not including any Hidden Realms or other stages that don't advance the stage count once you clear them) will roll for either vanilla or a variant. Commencement has a single variant that will always be on. If desired, any color scheme (including the vanilla stage) can be disabled in config.

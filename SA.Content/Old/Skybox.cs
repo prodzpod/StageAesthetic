@@ -1,9 +1,9 @@
-﻿using R2API;
-using UnityEngine.AddressableAssets;
-using UnityEngine.Rendering.PostProcessing;
-using UnityEngine.SceneManagement;
-using UnityEngine;
 using RoR2;
+using R2API;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.PostProcessing;
 
 namespace StageAesthetic
 {
