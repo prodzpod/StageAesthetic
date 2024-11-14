@@ -1,12 +1,12 @@
 ﻿using UnityEngine.Rendering.PostProcessing;
 
-namespace StageAesthetic.Variants.Stage1.TitanicPlains
+namespace StageAesthetic.Variants.Stage1.VerdantFalls
 {
     public class Vanilla : Variant
     {
-        public override string[] Stages => ["golemplains", "golemplains2"];
+        public override string[] Stages => ["lakes"];
         public override string Name => nameof(Vanilla);
         public override string Description => "Disabling removes vanilla from getting picked.";
-        public override SoundType Ambience => SoundType.DayNature;
+        public override SoundType Ambience => SoundType.WaterStream;
     }
 }
