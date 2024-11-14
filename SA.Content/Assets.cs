@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using HG;
+using static StageAesthetic.Assets;
 
 namespace StageAesthetic
 {
@@ -28,8 +29,9 @@ namespace StageAesthetic
             g.color = color; CacheRecolor[k] = g; return g;
         }
         public static void TryDestroy(string path) { GameObject a = GameObject.Find(path); if (a) UnityEngine.Object.Destroy(a); }
+        public static void TryDestroy(Transform parent, string path) { GameObject a = parent.Find(path).gameObject; if (a) UnityEngine.Object.Destroy(a); }
         public static Dictionary<Material, Material> CacheMaterial = [];
-        public static void MeshReplaceAll(params MeshReplaceInstance[] actions)
+        public static void MeshReplaceAll(params ReplaceInstance<MeshRenderer>[] actions)
         {
             var meshList = UnityEngine.Object.FindObjectsOfType(typeof(MeshRenderer)) as MeshRenderer[];
             foreach (MeshRenderer mr in meshList)
@@ -48,12 +50,30 @@ namespace StageAesthetic
                 }
             }
         }
-        public class MeshReplaceInstance(Func<MeshRenderer, bool> condition, Action<MeshRenderer> action)
-        {
-            public Func<MeshRenderer, bool> Condition = condition;
-            public Action<MeshRenderer> Action = action;
-            public MeshReplaceInstance(string[] keys, Action<MeshRenderer> action): this(mr => keys.Any(mr.gameObject.name.Contains), action) { }
-        }
         public static void TryMeshReplace(MeshRenderer mr, Material material) { if (mr?.sharedMaterial) mr.sharedMaterial = material; }
+        public static void LightReplaceAll(params ReplaceInstance<Light>[] actions)
+        {
+            var lightList = UnityEngine.Object.FindObjectsOfType(typeof(Light)) as Light[];
+            foreach (Light l in lightList)
+            {
+                if (!l.gameObject) continue;
+                foreach (var action in actions) if (action.Condition(l)) action.Action(l);
+            }
+        }
+        public static void ParticleReplaceAll(params ReplaceInstance<ParticleSystem>[] actions)
+        {
+            var particleList = UnityEngine.Object.FindObjectsOfType(typeof(ParticleSystem)) as ParticleSystem[];
+            foreach (ParticleSystem ps in particleList)
+            {
+                if (!ps.gameObject) continue;
+                foreach (var action in actions) if (action.Condition(ps)) action.Action(ps);
+            }
+        }
+        public class ReplaceInstance<T>(Func<T, bool> condition, Action<T> action) where T : Component
+        {
+            public Func<T, bool> Condition = condition;
+            public Action<T> Action = action;
+            public ReplaceInstance(string[] keys, Action<T> action) : this(x => keys.Any(x.gameObject.name.Contains), action) { }
+        }
     }
 }
