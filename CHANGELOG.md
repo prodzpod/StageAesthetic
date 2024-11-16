@@ -1,5 +1,56 @@
 # 1.1.0 Patch Notes
-- SotS
+- ![:p_hi:](https://raw.githubusercontent.com/prodzpod/StageAesthetic/refs/heads/main/p_hi.png)
+- works for SotS
+- Configurable per-variant weights (pre and post loop)
+- Configurable per-variant weather (can limit to pre/post loop)
+- Merged contributions by Nuxlar (thank you)
+  - Added variants
+    - Verdant Falls (Sunny)
+    - Verdant Falls (Purple)
+    - Shattered Abodes (Verdant)
+    - Shattered Abodes (Abandoned)
+    - Reformed Altar (Verdant)
+    - Reformed Altar (Helminth)
+    - Treeborn Colony (Overcast)
+    - Treeborn Colony (Sunny)
+    - Treeborn Colony (Night)
+    - Helminth Hatchery (Lunar)
+  - Skybox changes
+    - Distant Roost (Sunny)
+    - Distant Roost (Night)
+    - Distant Roost (Void)
+    - Siphoned Forest (Night)
+    - Titanic Plains (Night)
+    - Titanic Plains (Sunset)
+    - Verdant Falls (Purple)
+    - Verdant Falls (Sunny)
+    - Abandoned Aqueduct (New Night)
+    - Aphelian Sanctuary (Singularity)
+    - Aphelian Sanctuary (Sunset)
+    - Wetland Aspect (Morning)
+    - Wetland Aspect (Night)
+    - Wetland Aspect (Sunset)
+    - Wetland Aspect (Void)
+    - Rallypoint Delta (Night)
+    - Rallypoint Delta (Sunset)
+    - Scorched Acres (Twilight)
+    - Sulfur Pools (Void)
+    - Abyssal Depths (Night)
+    - Abyssal Depths (Orange)
+    - Siren's Call (Aphelian)
+    - Siren's Call (Night)
+    - Siren's Call (Sunny)
+    - Commencement (Night)
+    - Treeborn Colony (Night)
+  - Tweaked basically every variant out there
+- Merged contributions by Danielle (thank you)
+  - Added variants
+    - Abandoned Aqueduct (New Dawn)
+    - Abandoned Aqueduct (New Night)
+    - Abandoned Aqueduct (New Sunrise)
+- Added weather sounds
+- Dry Basin and Slumbering Satellite variants are back
+- Huge code rewrite
 
 # 1.0.3 Patch Notes
 - Literally just included the dependency I forgor about
