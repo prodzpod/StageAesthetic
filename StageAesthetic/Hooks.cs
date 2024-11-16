@@ -3,6 +3,7 @@ using RoR2;
 using RoR2.UI;
 using StageAesthetic.Variants;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Rendering.PostProcessing;
@@ -15,6 +16,7 @@ namespace StageAesthetic
         public static Dictionary<string, string> SceneNames = [];
         public static Dictionary<string, Stage> SceneStage = [];
         public static ConfigEntry<bool> DisplayVariantName;
+        public static ConfigEntry<bool> AvoidDuplicateVariants;
         public static string currentVariantName = "";
         public static void Init()
         {
@@ -24,6 +26,8 @@ namespace StageAesthetic
             TitleScreen.Init();
             Weather.Init();
             DisplayVariantName = ConfigManager.Bind("General", "Display Variant Name", true, "Display the variant name in the stage text.");
+            AvoidDuplicateVariants = ConfigManager.Bind("General", "Avoid Duplicate Variants", true, "Remove the variant from the pool once it is rolled until all variant for that stage is rolled.");
+            Variants.Stage5.SkyMeadow.Common.AddHook();
         }
         public static void PostInit()
         {
@@ -32,15 +36,18 @@ namespace StageAesthetic
                 SceneCollection sg = Assets.Load<SceneCollection>("RoR2/Base/SceneGroups/sgStage" + i + ".asset");
                 foreach (SceneCollection.SceneEntry entry in sg.sceneEntries) SceneStage[entry.sceneDef.cachedName] = (Stage)i;
             }
+            foreach (var s in new string[] { "moon", "moon2", "voidraid", "mysteryspace", "limbo", "BulwarksHaunt_GhostWave" }) SceneStage[s] = Stage.Ending;
             foreach (var s in SceneCatalog.allStageSceneDefs)
             {
-                SceneNames[s.cachedName] = Language.GetString(s.nameToken);
+                SceneNames[s.cachedName] = Language.GetString(s.nameToken).Replace(": ", " - ");
                 if (!SceneStage.ContainsKey(s.cachedName)) SceneStage[s.cachedName] = Stage.Special;
             }
             foreach (var t in Util.FindAllDerivedTypes<Variant>()) t.GetConstructor([]).Invoke(null);
         }
         public static void RollVariant(On.RoR2.SceneDirector.orig_Start orig, SceneDirector self)
         {
+            Variants.Stage5.SkyMeadow.Common.MaulingRockOverride = null;
+            Variants.Stage5.SkyMeadow.Common.Rocks = [];
             foreach (var a in Assets.CacheMaterial.Values) Object.Destroy(a); 
             Assets.CacheMaterial.Clear();
             var sceneName = SceneManager.GetActiveScene().name;
@@ -49,6 +56,7 @@ namespace StageAesthetic
             string[] names = ["PP + Amb", "PP, Global", "GlobalPostProcessVolume, Base", "PP+Amb"];
             foreach (var name in names) volume = TryAlternative(volume, name);
             volume = TryAlternative(volume, GameObject.Find("MapZones")?.transform?.Find("PostProcess Zones")?.Find("SandOvercast")?.gameObject);
+            volume = TryAlternative(volume, GameObject.Find("MapZones")?.transform?.Find("PostProcess Zones")?.Find("Sandstorm")?.gameObject);
             if (sceneName == "moon2")
             {
                 volume = currentScene.gameObject.AddComponent<PostProcessVolume>();

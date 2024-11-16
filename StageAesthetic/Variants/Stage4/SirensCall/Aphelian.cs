@@ -53,9 +53,9 @@ namespace StageAesthetic.Variants.Stage4.SirensCall
         {
             Assets.MeshReplaceAll([
                 new(["Spikes", "Stalactite", "Stalagmite", "Level Wall", "Mesh"], mr => {
-                    var parent = mr.transform.parent.gameObject;
+                    var parent = mr.transform.parent;
                     if (!parent) return;
-                    if (parent.name.Contains("Cave") || parent.name.Contains("Terrain") || parent.name.Contains("Stalagmite"))
+                    if (parent.gameObject.name.Contains("Cave") || parent.gameObject.name.Contains("Terrain") || parent.gameObject.name.Contains("Stalagmite"))
                         Assets.TryMeshReplace(mr, Assets.LoadRecolor("RoR2/DLC1/ancientloft/matAncientLoft_Temple.mat", new Color32(138, 176, 167, 255)));
                 }),
                 new(["Terrain", "Cave", "Floor"], mr => Assets.TryMeshReplace(mr, Assets.LoadRecolor("RoR2/DLC1/ancientloft/matAncientLoft_Terrain.mat", new Color32(138, 176, 167, 255)))),

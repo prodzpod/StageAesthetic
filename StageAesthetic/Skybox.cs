@@ -9,6 +9,7 @@ namespace StageAesthetic
 {
     public class Skybox
     {
+        // todo: clean this whole place up
         private static readonly PostProcessProfile ppHelminth = Addressables.LoadAssetAsync<PostProcessProfile>("RoR2/DLC2/helminthroost/ppSceneHelminth.asset").WaitForCompletion();
         private static readonly PostProcessProfile ppScorched = Addressables.LoadAssetAsync<PostProcessProfile>("RoR2/Base/title/PostProcessing/ppSceneWispGraveyard.asset").WaitForCompletion();
         private static readonly PostProcessProfile ppPlainsRoost = Object.Instantiate(Addressables.LoadAssetAsync<PostProcessProfile>("RoR2/Base/title/PostProcessing/ppSceneGolemplainsFoggy.asset").WaitForCompletion());
@@ -78,7 +79,7 @@ namespace StageAesthetic
             ambLight.ApplyLighting();
             skybox.transform.GetChild(1).gameObject.SetActive(false);
             skybox.transform.GetChild(4).GetChild(0).GetChild(2).gameObject.SetActive(false);
-            skybox.transform.GetChild(4).GetChild(0).GetComponent<MeshRenderer>().sharedMaterials = new Material[2] { spaceSkyboxMat, spaceStarsMat2 };
+            skybox.transform.GetChild(4).GetChild(0).GetComponent<MeshRenderer>().sharedMaterials = [spaceSkyboxMat, spaceStarsMat2];
             skybox.transform.GetChild(4).GetChild(0).GetChild(1).GetChild(6).gameObject.SetActive(false);
             skybox.transform.GetChild(4).GetChild(0).GetChild(1).GetChild(11).gameObject.SetActive(false);
             foreach (Transform child in skybox.transform.GetChild(4).GetChild(0).GetChild(1).transform)

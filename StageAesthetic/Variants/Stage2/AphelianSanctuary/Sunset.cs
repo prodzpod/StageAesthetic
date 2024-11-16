@@ -17,7 +17,7 @@ namespace StageAesthetic.Variants.Stage2.AphelianSanctuary
             if (sun)
             {
                 sun.SetActive(false);
-                GameObject newSun = GameObject.Instantiate(Skybox.sun, sun.transform.parent);
+                GameObject newSun = Object.Instantiate(Skybox.sun, sun.transform.parent);
                 newSun.transform.localPosition = new Vector3(-897.0126f, 350f, 209.9904f);
                 newSun.transform.eulerAngles = new Vector3(275f, 90f, 90f);
                 newSun.GetComponent<MeshRenderer>().sharedMaterial = Skybox.sunMat;

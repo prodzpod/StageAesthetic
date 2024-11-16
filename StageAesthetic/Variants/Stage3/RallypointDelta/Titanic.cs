@@ -77,7 +77,7 @@ namespace StageAesthetic.Variants.Stage3.RallypointDelta
                 new(["Terrain", "Snow", "FW_FloatingIsland"], mr => Assets.TryMeshReplace(mr, rpdTitanicTerrainMat)),
                 new(["Glacier", "Stalagmite", "Boulder", "CavePillar", "FW_Pillar"], mr => Assets.TryMeshReplace(mr, rpdTitanicDetailMat)),
                 new(["GroundMesh", "GroundStairs", "VerticalPillar", "Human", "Barrier", "FW_Ground", "FW_WaterContainer", "FW_Canister", "ShippingContainer", "ArtifactFormulaHolderMesh", "FW_Crate"], mr => Assets.TryMeshReplace(mr, rpdTitanicDetailMat2)),
-                new(mr => mr.gameObject.name.Contains("Pillar") && mr.transform.parent.gameObject && mr.transform.parent.name.Contains("VerticalPillarParent"), mr => Assets.TryMeshReplace(mr, rpdTitanicDetailMat2)),
+                new(mr => mr.gameObject.name.Contains("Pillar") && mr.transform.parent && mr.transform.parent.name.Contains("VerticalPillarParent"), mr => Assets.TryMeshReplace(mr, rpdTitanicDetailMat2)),
                 new(["HumanChainLink", "Stalactite"], mr => mr.gameObject.SetActive(false))
             ]);
         }

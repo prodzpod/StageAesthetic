@@ -47,7 +47,7 @@ namespace StageAesthetic.Variants.Stage2.AphelianSanctuary
             var stupidList = Object.FindObjectsOfType(typeof(SkinnedMeshRenderer)) as SkinnedMeshRenderer[];
 
             Assets.MeshReplaceAll([new(["CirclePot", "BrokenPot", "Planter", "AW_Cube", "Mesh, Cube", "AncientLoft_WaterFenceType", "Tile", "Rock", "Pillar", "Boulder", "Step", "LightStatue", "LightStatue_Stone", "FountainLG", "Shrine", "Sculpture"], mr => {
-                    if (!mr.transform.parent.gameObject) return;
+                    if (!mr.transform.parent) return;
                     var light = mr.gameObject.AddComponent<Light>();
                     light.color = new Color32(125, 43, 48, 225);
                     light.intensity = 6f;
@@ -76,9 +76,9 @@ namespace StageAesthetic.Variants.Stage2.AphelianSanctuary
             var detailMat3 = Assets.Load<Material>("RoR2/Base/TitanGoldDuringTP/matGoldHeart.mat");
             Assets.MeshReplaceAll([
                 new(mr => {
-                    var meshParent = mr.transform.parent.gameObject; 
+                    var meshParent = mr.transform.parent; 
                     if (!meshParent) return false;
-                    return meshParent.name.Contains("TempleTop") && mr.gameObject.name.Contains("RuinBlock") || mr.gameObject.name.Contains("GPRuinBlockQuarter");
+                    return meshParent.gameObject.name.Contains("TempleTop") && mr.gameObject.name.Contains("RuinBlock") || mr.gameObject.name.Contains("GPRuinBlockQuarter");
                 }, mr => Assets.TryMeshReplace(mr, detailMat2)), // distantRoostAbyssalDetailMat
                 new(mr => mr.gameObject.name.Equals("Terrain") && mr.sharedMaterials.Length > 0, mr => Assets.MeshReplaceAll(mr, terrainMat)),
                 new(["Terrain", "Dirt", "TerrainPlatform"], mr => {

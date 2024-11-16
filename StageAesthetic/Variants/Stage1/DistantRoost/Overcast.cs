@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.U2D;
 
 namespace StageAesthetic.Variants.Stage1.DistantRoost
 {
@@ -42,24 +43,16 @@ namespace StageAesthetic.Variants.Stage1.DistantRoost
                 GameObject.Find("SKYBOX").transform.GetChild(3).gameObject.SetActive(true);
 
             var lightList = Object.FindObjectsOfType(typeof(Light)) as Light[];
-
-            foreach (Light light in lightList)
-            {
-                var lightBase = light.gameObject;
-
-                if (lightBase != null)
-                {
-                    var lightParent = lightBase.transform.parent;
-                    if (lightParent != null)
-                    {
-                        if (lightParent.gameObject.name.Equals("BbRuinBowl") || lightParent.gameObject.name.Equals("BbRuinBowl (1)") || lightParent.gameObject.name.Equals("BbRuinBowl (2)"))
-                        {
-                            light.intensity = 10;
-                            light.range = 30;
-                        }
-                    }
-                }
-            }
+            Assets.ReplaceAll<Light>([
+                new(l => {
+                    var parent = l.transform.parent;
+                    if (!parent) return false;
+                    return parent.gameObject.name.Equals("BbRuinBowl") || parent.gameObject.name.Equals("BbRuinBowl (1)") || parent.gameObject.name.Equals("BbRuinBowl (2)");
+                }, l => {
+                    l.intensity = 10;
+                    l.range = 30;
+                })
+            ]);
             Common.VanillaFoliage();
         }
         public override void DoWeather(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)

@@ -9,7 +9,7 @@ namespace StageAesthetic.Variants.Stage2.DryBasin
         public override string[] Stages => ["drybasin"];
         public override string Name => nameof(Blue);
         public override string Description => "Blue.";
-        public override SoundType Ambience => SoundType.Wind;
+        public override SoundType Ambience => SoundType.DayNature;
         public override void Apply(string scenename, TheCoolerRampFog fog, RampFog fog2, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
             base.Apply(scenename, fog, fog2, cgrade, volume, loop);

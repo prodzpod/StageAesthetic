@@ -10,7 +10,7 @@ namespace StageAesthetic.Variants.Stage5.SlumberingSatellite
         public override string[] Stages => ["slumberingsatellite"];
         public override string Name => nameof(Blue);
         public override string Description => "BLUE!";
-        public override SoundType Ambience => SoundType.Thunder;
+        public override SoundType Ambience => SoundType.DayNature;
         public override void Apply(string scenename, TheCoolerRampFog fog, RampFog fog2, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
             base.Apply(scenename, fog, fog2, cgrade, volume, loop);

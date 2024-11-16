@@ -1,5 +1,6 @@
 ﻿using BepInEx.Configuration;
 using RoR2;
+using StageAesthetic.Variants;
 using UnityEngine;
 
 namespace StageAesthetic
@@ -9,6 +10,7 @@ namespace StageAesthetic
         public static GameObject Rain;
         public static GameObject Snow;
         public static GameObject Sand;
+        public static ConfigEntry<EnableConfig> WeatherEnable;
         public static ConfigEntry<bool> WeatherSound;
         public static void Init()
         {
@@ -17,6 +19,7 @@ namespace StageAesthetic
             Snow = Main.AssetBundle.LoadAsset<GameObject>("Stage Aesthetic Snow.prefab");
             Snow.transform.eulerAngles = new Vector3(90, 0, 0);
             Sand = Main.AssetBundle.LoadAsset<GameObject>("Stage Aesthetic Sand.prefab");
+            WeatherEnable = ConfigManager.Bind("General", "Global Weather Enable", EnableConfig.Enable, "Adds/swaps rain/snow/sand for stages. Disabling this is recommended if performance is a big issue. Starstorm 2 compatibility coming soon.");
             WeatherSound = ConfigManager.Bind("General", "Use weather sound effects?", true, "Adds sound effects for weather.");
         }
         public static void PlaySound(SoundType soundType)

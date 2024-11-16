@@ -31,7 +31,7 @@ namespace StageAesthetic
             g.color = color; CacheRecolor[k] = g; return g;
         }
         public static void TryDestroy(string path) { GameObject a = GameObject.Find(path); if (a) UnityEngine.Object.Destroy(a); }
-        public static void TryDestroy(Transform parent, string path) { GameObject a = parent.Find(path).gameObject; if (a) UnityEngine.Object.Destroy(a); }
+        public static void TryDestroy(Transform parent, string path) { Transform a = parent.Find(path); if (a) UnityEngine.Object.Destroy(a.gameObject); }
         public static Dictionary<Material, Material> CacheMaterial = [];
         public static void MeshReplaceAll(params ReplaceInstance<MeshRenderer>[] actions)
         {

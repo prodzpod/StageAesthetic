@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MonoMod.Cil;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -25,20 +27,19 @@ namespace StageAesthetic.Variants.Stage5.SkyMeadow
         }
         public static void ReplaceMaterials(Material terrainMat, Material terrainMat2, Material detailMat, Material detailMat2, Material detailMat3, Material detailMat4, Material detailMat5)
         {
-
+            MaulingRockOverride = terrainMat2;
             var r = GameObject.Find("HOLDER: Randomization").transform;
             var btp = GameObject.Find("PortalDialerEvent").transform.GetChild(0); //Final Zone
             Assets.MeshReplaceAll([
-                new(CheckParents([["Plateau", "skymeadow_terrain"], ["SMRock", "FORMATION"]]), mr => Assets.TryMeshReplace(mr, terrainMat)),
-                new(CheckParents([["SMRock", "HOLDER: Spinning Rocks"], ["SMRock", "P13"], ["SMPebble", "Underground"], ["Boulder", "PortalDialerEvent"], ["SMRock", "GROUP: Rocks"], ["BbRuinPillar"]]), mr => Assets.TryMeshReplace(mr, detailMat)),
-                new(CheckParents([["SMSpikeBridge", "Underground"]]), mr => Assets.TryMeshReplace(mr, detailMat2)),
-                new(CheckParents([["Terrain", "skymeadow_terrain"], ["Plateau Under", "Underground"]]), mr => Assets.TryMeshReplace(mr, terrainMat2)),
+                new(CheckParents([["Plateau", "HOLDER: Terrain"], ["SM_Rock", "FORMATION"]]), mr => Assets.TryMeshReplace(mr, terrainMat)),
+                new(CheckParents([["SMRock", "HOLDER: Spinning Rocks"], ["SMRock", "P13"], ["SM_Pebble", "Underground"], ["Boulder", "PortalDialerEvent"], ["SM_Rock", "GROUP: Rocks"], ["BbRuinPillar"]]), mr => Assets.TryMeshReplace(mr, detailMat)),
+                new(CheckParents([["Terrain", "HOLDER: Terrain"], ["Plateau Under", "Underground"]]), mr => Assets.TryMeshReplace(mr, terrainMat2)),
                 new(CheckParents([["Base", "PowerCoil"], ["InteractableMesh", "PortalDialerButton"]]), mr => Assets.TryMeshReplace(mr, detailMat4)),
                 new(CheckParents([["Coil", "PowerCoil"]]), mr => Assets.TryMeshReplace(mr, detailMat5)),
-                new(["SMPebble", "mdlGeyser"], mr => Assets.TryMeshReplace(mr, detailMat)),
+                new(["SM_Pebble", "mdlGeyser"], mr => Assets.TryMeshReplace(mr, detailMat)),
                 new(["SMSpikeBridge"], mr => Assets.TryMeshReplace(mr, detailMat2)),
-                new(["PowerLine", "MegaTeleporter", "BbRuinGateDoor", "BbRuinArch"], mr => Assets.TryMeshReplace(mr, detailMat3)),
-                new(["HumanCrate", "BbRuinPillar"], mr => Assets.TryMeshReplace(mr, detailMat4))
+                new(["PowerLine", "MegaTeleporter", "SMRuinGateDoor", "SMRuinArch"], mr => Assets.TryMeshReplace(mr, detailMat3)),
+                new(["HumanCrate", "SMRuinPillar"], mr => Assets.TryMeshReplace(mr, detailMat4))
             ]);
             btp.GetChild(0).GetComponent<MeshRenderer>().sharedMaterial = terrainMat2; //Terrain
             GameObject.Find("ArtifactFormulaHolderMesh").GetComponent<MeshRenderer>().sharedMaterial = detailMat2;
@@ -66,6 +67,7 @@ namespace StageAesthetic.Variants.Stage5.SkyMeadow
                 // Plateau 11
                 new(r, [3, 0, 0], terrainMat2), //Plateau 11 Bridge (1)
                 // Plateau 13
+                new(r, [4, 0, 1], terrainMat), //SM_Plateau 13
                 new(r, [4, 1, 0], terrainMat2), //Rock Connect (1)
                 // Plateau 15
                 new(r, [5, 0, 0], terrainMat2), //Plateau 15 (1)
@@ -101,7 +103,7 @@ namespace StageAesthetic.Variants.Stage5.SkyMeadow
             {
                 if (!mr.gameObject.name.Contains(x[0])) return false;
                 if (x.Length == 1) return true;
-                var parent = mr.transform.parent.gameObject;
+                var parent = mr.transform.parent;
                 if (!parent) return false;
                 return parent.gameObject.name.Contains(x[1]);
             });
@@ -115,6 +117,27 @@ namespace StageAesthetic.Variants.Stage5.SkyMeadow
             public J(Transform root, int[] hierarchy, Action<Transform> ret) : this(root, "", hierarchy, ret) { }
             public J(Transform root, string find, int[] hierarchy, Material ret) : this(root, find, hierarchy, m => { var mr = m.GetComponent<MeshRenderer>(); if (mr) mr.sharedMaterial = ret; }) { }
             public J(Transform root, int[] hierarchy, Material ret) : this(root, "", hierarchy, ret) { }
+        }
+
+        public static Material MaulingRockOverride = null;
+        public static Dictionary<GameObject, GameObject> Rocks = [];
+        public static void AddHook()
+        {
+            IL.MaulingRockZoneManager.FireRock += il =>
+            {
+                ILCursor c = new(il);
+                c.GotoNext(x => x.MatchStloc(out _));
+                c.EmitDelegate<Func<GameObject, GameObject>>(rock =>
+                {
+                    if (MaulingRockOverride == null || !rock || !rock.transform.Find("Model")) return rock;
+                    GameObject ret;
+                    if (Rocks.ContainsKey(rock)) ret = Rocks[rock];
+                    else { ret = UnityEngine.Object.Instantiate(rock); Rocks[rock] = ret; }
+                    var mr = ret.transform.Find("Model").GetComponent<MeshRenderer>();
+                    Assets.TryMeshReplace(mr, MaulingRockOverride);
+                    return ret;
+                });
+            };
         }
     }
 }

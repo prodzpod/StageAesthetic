@@ -10,10 +10,10 @@ namespace StageAesthetic.Variants.Stage4.AbyssalDepths
             Assets.MeshReplaceAll([
                 new(["Mesh", "Ruin"], mr => Assets.TryMeshReplace(mr, detailMat3)),
                 new(mr => {
-                    var parent = mr.transform.parent.gameObject;
-                    if (!mr) return false;
-                    return (mr.gameObject.name.Contains("Mesh") && parent.name.Contains("Ruin"))
-                        || (mr.gameObject.name.Contains("RuinBowl") && parent.name.Contains("RuinMarker"));
+                    var parent = mr.transform.parent;
+                    if (!parent) return false;
+                    return (mr.gameObject.name.Contains("Mesh") && parent.gameObject.name.Contains("Ruin"))
+                        || (mr.gameObject.name.Contains("RuinBowl") && parent.gameObject.name.Contains("RuinMarker"));
                 }, mr => Assets.TryMeshReplace(mr, detailMat3)),
                 new(["Hero", "Ceiling"], mr => Assets.TryMeshReplace(mr, terrainMat)),
                 new(["Boulder"], mr => Assets.TryMeshReplace(mr, boulderMat)),
@@ -34,18 +34,18 @@ namespace StageAesthetic.Variants.Stage4.AbyssalDepths
         {
             Assets.ReplaceAll<Light>([
                 new(l => {
-                    var parent = l.transform.parent.gameObject;
+                    var parent = l.transform.parent;
                     if (!parent) return false;
-                    return parent.name.Equals("DCCoralPropMediumActive");
+                    return parent.gameObject.name.Equals("DCCoralPropMediumActive");
                 }, l => {
                     l.color = coral;
                     var lightLP = l.transform.localPosition;
                     lightLP.z = 4;
                 }),
                 new(l => {
-                    var parent = l.transform.parent.gameObject;
+                    var parent = l.transform.parent;
                     if (!parent) return false;
-                    return parent.name.Equals("DCCrystalCluster Variant");
+                    return parent.gameObject.name.Equals("DCCrystalCluster Variant");
                 }, l => l.color = crystal),
                 new(l => l.gameObject.name.Equals("CrystalLight"), l => l.color = chain)
             ]);

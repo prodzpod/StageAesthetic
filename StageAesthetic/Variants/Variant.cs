@@ -50,16 +50,22 @@ namespace StageAesthetic.Variants
 
         // statics
         public static List<Variant> Variants = [];
+        public static Dictionary<string, List<Variant>> VariantsRolled = [];
         public static Variant GetVariant(string stage, bool loop = false) 
         {
             WeightedSelection<Variant> w = new();
             foreach (var v in Variants)
             {
                 if (!v.Stages.Contains(stage)) continue;
-                w.AddChoice(v, loop ? v.LoopWeight.Value : v.PreLoopWeight.Value);
+                var weight = loop ? v.LoopWeight.Value : v.PreLoopWeight.Value;
+                if (weight <= 0) continue; w.AddChoice(v, weight);
             }
             if (w.choices.Length == 0) return Vanilla;
-            return w.Evaluate(Run.instance.stageRng.nextNormalizedFloat);
+            if (!Hooks.AvoidDuplicateVariants.Value) return w.Evaluate(Run.instance.stageRng.nextNormalizedFloat);
+            if (!VariantsRolled.ContainsKey(stage) || VariantsRolled[stage].Count == w.choices.Length) VariantsRolled[stage] = [];
+            WeightedSelection<Variant> w2 = new();
+            for (int i = 0; i < w.Count; i++) if (!VariantsRolled[stage].Contains(w.choices[i].value)) w2.AddChoice(w.choices[i]);
+            return w2.Evaluate(Run.instance.stageRng.nextNormalizedFloat);
         }
         public static Variant GetVariant(string stage, string name) => Variants.TryFind(x => x.Stages.Contains(stage) && x.Name.ToLower() == name.ToLower()) ?? Vanilla;
         public static Variant Vanilla => Variants.Find(x => x.Stages.Length == 0 && x.Name == "Vanilla");

@@ -31,8 +31,8 @@ namespace StageAesthetic
         }
         public static ConfigEntry<T> Bind<T>(string category, string name, T def, string desc)
         {
-            var config = Config.Bind(category, name, def, desc);
-            var backup = BackupConfig.Bind(category, name, def, desc);
+            var config = Config.Bind(Util.ConfigSafe(category), Util.ConfigSafe(name), def, desc);
+            var backup = BackupConfig.Bind(Util.ConfigSafe(category), Util.ConfigSafe(name), def, desc);
             if (AutoUpdate.Value && backup.BoxedValue == config.BoxedValue && backup.DefaultValue != backup.BoxedValue)
             {
                 Main.Log.LogInfo("Default Config Auto-Updated for " + config);

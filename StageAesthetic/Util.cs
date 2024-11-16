@@ -50,6 +50,8 @@ namespace StageAesthetic
             foreach (var i in idx) ret = ret.GetChild(i);
             return ret;
         }
+        public static string ConfigSafe(string e)
+            => e.Replace("\n", " ").Replace("\t", " ").Replace("\n", "").Replace("\\", "/").Replace("\"", "``").Replace("'", "`").Replace("[", "(").Replace("]", ")");
     }
     public enum Stage
     {

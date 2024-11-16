@@ -101,9 +101,9 @@ namespace StageAesthetic.Variants.Stage1.DistantRoost
                     var meshParent = mr.transform.parent.gameObject;
                     return meshParent && meshParent.name.Contains("Pillar") && meshParent.transform.Find("Foam") != null;
                 }, mr => mr.transform.parent.Find("Foam").gameObject.SetActive(false)),
-                new(mr => mr.transform.parent.gameObject && mr.transform.parent.gameObject.name.Contains("terrain") && mr.gameObject.name.Contains("Pillar"),
+                new(mr => mr.transform.parent && mr.transform.parent.gameObject.name.Contains("terrain") && mr.gameObject.name.Contains("Pillar"),
                     mr => Assets.TryMeshReplace(mr, Assets.LoadRecolor("RoR2/Base/dampcave/matDCTerrainGiantColumns.mat", new Color32(0, 0, 0, 204)))),
-                new(mr => mr.transform.parent.gameObject && mr.transform.parent.gameObject.name.Equals("Foliage") && mr.gameObject.name.Contains("bbSimpleGrassPrefab"),
+                new(mr => mr.transform.parent && mr.transform.parent.gameObject.name.Equals("Foliage") && mr.gameObject.name.Contains("bbSimpleGrassPrefab"),
                     mr => mr.gameObject.SetActive(false)),
                 new(["Terrain", "Shelf"], mr => Assets.LoadRecolor("RoR2/Base/dampcave/matDCTerrainGiantColumns.mat", new Color32(0, 0, 0, 204))),
                 new(["Boulder", "boulder", "Rock", "Step", "Tile", "mdlGeyser", "Bowl", "Marker", "DistantBridge", "Pebble"], mr => Assets.TryMeshReplace(mr, Assets.Load<Material>("RoR2/Base/dampcavesimple/matDCBoulder.mat"))),

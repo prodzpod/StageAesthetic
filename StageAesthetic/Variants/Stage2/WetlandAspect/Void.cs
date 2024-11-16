@@ -55,24 +55,24 @@ namespace StageAesthetic.Variants.Stage2.WetlandAspect
                         mr.gameObject.transform.GetComponentInChildren<MeshRenderer>().sharedMaterial = detailMat;
                 }),
                 new(mr => {
-                    var parent = mr.transform.parent.gameObject;
+                    var parent = mr.transform.parent;
                     if (!parent) return false;
-                    return mr.transform.name.Contains("Mesh") && (parent.name.Contains("FSTree") || parent.name.Contains("FSRootBundle"));
+                    return mr.gameObject.name.Contains("Mesh") && (parent.gameObject.name.Contains("FSTree") || parent.gameObject.name.Contains("FSRootBundle"));
                 }, mr => Assets.TryMeshReplace(mr, detailMat2)),
                 new(mr => {
-                    var parent = mr.transform.parent.gameObject;
+                    var parent = mr.transform.parent;
                     if (!parent) return false;
-                    return mr.gameObject.name.Contains("Mesh") && parent.name.Contains("FSRuinPillar");
+                    return mr.gameObject.name.Contains("Mesh") && parent.gameObject.name.Contains("FSRuinPillar");
                 }, mr => Assets.TryMeshReplace(mr, detailMat)),
                 new(mr => {
-                    var parent = mr.transform.parent.gameObject;
+                    var parent = mr.transform.parent;
                     if (!parent) return false;
-                    return (mr.gameObject.name.Contains("RootBundleLargeCards") || mr.gameObject.name.Contains("RootBundleSmallCards")) && (parent.name.Contains("FSRootBundleLarge") || parent.name.Contains("FSRootBundleSmall"));
+                    return (mr.gameObject.name.Contains("RootBundleLargeCards") || mr.gameObject.name.Contains("RootBundleSmallCards")) && (parent.gameObject.name.Contains("FSRootBundleLarge") || parent.gameObject.name.Contains("FSRootBundleSmall"));
                 }, mr => mr.gameObject.SetActive(false)),
                 new(["RootBundleLarge_LOD0", "RootBundleLarge_LOD1", "RootBundleLarge_LOD2", "RootBundleSmall_LOD0", "RootBundleSmall_LOD1", "RootBundleSmall_LOD2"], mr => {
-                    var parent = mr.transform.parent.gameObject;
+                    var parent = mr.transform.parent;
                     if (!parent) return;
-                    if (parent.name.Contains("FSRootBundleLarge") || parent.name.Contains("FSRootBundleSmall"))
+                    if (parent.gameObject.name.Contains("FSRootBundleLarge") || parent.gameObject.name.Contains("FSRootBundleSmall"))
                         Assets.TryMeshReplace(mr, detailMat);
                 }),
                 new(mr => mr.gameObject.name.Contains("Ruin") && mr.gameObject.name != "FSGiantRuinDoorCollision", mr => Assets.TryMeshReplace(mr, detailMat2))
