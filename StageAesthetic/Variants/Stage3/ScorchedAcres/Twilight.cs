@@ -10,7 +10,7 @@ namespace StageAesthetic.Variants.Stage3.ScorchedAcres
     {
         public override string[] Stages => ["wispgraveyard"];
         public override string Name => nameof(Twilight);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Blue and pinkish.";
         public override SoundType Ambience => SoundType.Wind;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {

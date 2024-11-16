@@ -8,7 +8,7 @@ namespace StageAesthetic.Variants.Stage4.SirensCall
     {
         public override string[] Stages => ["shipgraveyard"];
         public override string Name => nameof(Aphelian);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Texture swap to Blue/Yellow/Orange Aphelian Sanctuary.";
         public override SoundType Ambience => SoundType.Wind;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {

@@ -9,7 +9,7 @@ namespace StageAesthetic.Variants.Special.Bonus.VoidLocus
     {
         public override string[] Stages => ["voidstage"];
         public override string Name => nameof(Pink);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Pink..";
         public override SoundType Ambience => SoundType.Void;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {

@@ -7,7 +7,7 @@ namespace StageAesthetic.Variants.Stage5.HelminthHatchery
     {
         public override string[] Stages => ["helminthroost"];
         public override string Name => nameof(Lunar);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Bleu and ashy terrain.";
         public override SoundType Ambience => SoundType.Void;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {

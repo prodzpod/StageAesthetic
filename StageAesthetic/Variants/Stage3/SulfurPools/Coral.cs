@@ -8,7 +8,7 @@ namespace StageAesthetic.Variants.Stage3.SulfurPools
     {
         public override string[] Stages => ["sulfurpools"];
         public override string Name => nameof(Coral);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Blue sky.";
         public override SoundType Ambience => SoundType.WaterStream;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -43,7 +43,7 @@ namespace StageAesthetic.Variants.Stage3.SulfurPools
             fuckYou.transform.GetChild(12).gameObject.SetActive(false);
             fuckYou.transform.GetChild(13).gameObject.SetActive(false);
             GameObject.Find("SPCavePP").SetActive(false);
-            SulfurPools.Vanilla.VanillaWater();
+            Common.VanillaWater();
         }
         public override void DoWeather(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
             => Weather.AddRain(Intensity.Mild);

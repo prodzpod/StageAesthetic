@@ -7,7 +7,7 @@ namespace StageAesthetic.Variants.Stage5.SkyMeadow
     {
         public override string[] Stages => ["skymeadow"];
         public override string Name => nameof(Night);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Blue and dark.";
         public override SoundType Ambience => SoundType.NightNature;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -29,7 +29,7 @@ namespace StageAesthetic.Variants.Stage5.SkyMeadow
             lightBase.Find("CameraRelative").Find("SmallStars").gameObject.SetActive(true);
             GameObject.Find("SMSkyboxPrefab").transform.Find("MoonHolder").Find("ShatteredMoonMesh").gameObject.SetActive(false);
             GameObject.Find("SMSkyboxPrefab").transform.Find("MoonHolder").Find("MoonMesh").gameObject.SetActive(true);
-            SkyMeadow.Vanilla.VanillaFoliage();
+            Common.VanillaFoliage();
         }
     }   
 }

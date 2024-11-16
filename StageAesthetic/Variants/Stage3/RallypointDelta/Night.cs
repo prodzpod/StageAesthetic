@@ -11,7 +11,7 @@ namespace StageAesthetic.Variants.Stage3.RallypointDelta
     {
         public override string[] Stages => ["frozenwall"];
         public override string Name => nameof(Night);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Blue and dark with extra snow.";
         public override SoundType Ambience => SoundType.NightNature;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -43,7 +43,7 @@ namespace StageAesthetic.Variants.Stage3.RallypointDelta
         }
         public override void DoWeather(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
-            RallypointDelta.Vanilla.DisableRallypointSnow();
+            Common.DisableRallypointSnow();
             Weather.AddSnow(Intensity.Extreme);
         }
         public static void NightMaterials()

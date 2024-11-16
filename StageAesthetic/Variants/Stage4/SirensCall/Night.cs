@@ -7,7 +7,7 @@ namespace StageAesthetic.Variants.Stage4.SirensCall
     {
         public override string[] Stages => ["shipgraveyard"];
         public override string Name => nameof(Night);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Dark and green.";
         public override SoundType Ambience => SoundType.NightNature;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -28,18 +28,7 @@ namespace StageAesthetic.Variants.Stage4.SirensCall
             sunLight.color = new Color32(155, 163, 227, 255);
             sunLight.intensity = 2f;
             sunLight.shadowStrength = 0.5f;
-            ChangeGrassColor();
-        }
-        public static void ChangeGrassColor()
-        {
-            Assets.MeshReplaceAll([
-                new(["Grass"], mr => {
-                    if (mr.sharedMaterial) return;
-                    mr.sharedMaterial.color = new Color32(99, 97, 63, 255);
-                    if (mr.sharedMaterials.Length >= 2) mr.sharedMaterials[1].color = new Color32(99, 97, 63, 255);
-                }),
-                new(["DanglingMoss"], mr => { if (mr.sharedMaterial) mr.sharedMaterial.color = new Color32(255, 255, 255, 255); })
-            ]);
+            Common.ChangeGrassColor();
         }
     }   
 }

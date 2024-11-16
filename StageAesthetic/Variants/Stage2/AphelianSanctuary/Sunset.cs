@@ -8,7 +8,7 @@ namespace StageAesthetic.Variants.Stage2.AphelianSanctuary
     {
         public override string[] Stages => ["ancientloft"];
         public override string Name => nameof(Sunset);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Very strong orange sun.";
         public override SoundType Ambience => SoundType.DayNature;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {

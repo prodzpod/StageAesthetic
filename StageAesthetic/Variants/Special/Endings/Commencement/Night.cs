@@ -8,7 +8,7 @@ namespace StageAesthetic.Variants.Special.Endings.Commencement
     {
         public override string[] Stages => ["moon2"];
         public override string Name => nameof(Night);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Very dark with a great view.";
         public override SoundType Ambience => SoundType.Thunder;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {

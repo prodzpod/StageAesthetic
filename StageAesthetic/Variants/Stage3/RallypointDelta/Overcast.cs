@@ -9,7 +9,7 @@ namespace StageAesthetic.Variants.Stage3.RallypointDelta
     {
         public override string[] Stages => ["frozenwall"];
         public override string Name => nameof(Overcast);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Rainy and snowy with more fog.";
         public override SoundType Ambience => SoundType.Rain;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -51,7 +51,7 @@ namespace StageAesthetic.Variants.Stage3.RallypointDelta
         public override void DoWeather(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
             Weather.AddRain(Intensity.Heavy);
-            RallypointDelta.Vanilla.DisableRallypointSnow();
+            Common.DisableRallypointSnow();
             Weather.AddSnow(Intensity.Mild, 250f);
         }
     }

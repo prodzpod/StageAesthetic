@@ -7,7 +7,7 @@ namespace StageAesthetic.Variants.Stage2.AbandonedAqueduct
     {
         public override string[] Stages => ["goolake"];
         public override string Name => "New Night";
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Dark blue.";
         public override SoundType Ambience => SoundType.NightNature;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -21,7 +21,7 @@ namespace StageAesthetic.Variants.Stage2.AbandonedAqueduct
             base1.Find("Props").GetChild(4).gameObject.SetActive(true);
             GameObject.Find("Weather, Goolake").SetActive(false);
             Assets.ReplaceAll<Light>([new(["CrystalLight"], l => l.color = new Color(0.221f, 0.961f, 0.925f))]);
-            AbandonedAqueduct.Vanilla.VanillaFoliage();
+            Common.VanillaFoliage();
         }
         public override void DoWeather(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {

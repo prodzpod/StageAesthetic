@@ -7,7 +7,7 @@ namespace StageAesthetic.Variants.Special.Colossus.ReformedAltar
     {
         public override string[] Stages => ["lemuriantemple"];
         public override string Name => nameof(Verdant);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Sunny and bright green.";
         public override SoundType Ambience => SoundType.Wind;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -33,44 +33,13 @@ namespace StageAesthetic.Variants.Special.Colossus.ReformedAltar
             detailMat2.SetTexture("_BlueChannelTex", detailMat22.GetTexture("_MainTex"));
             detailMat2.SetTexture("_RedChannelTopTex", detailMat22.GetTexture("_DirtTex"));
             detailMat2.SetTexture("_RedChannelSideTex", detailMat22.GetTexture("_DirtTex"));
-            AltarMaterials(
+            Common.AltarMaterials(
                 terrainMat,
                 Assets.Load<Material>("RoR2/DLC2/lakes/Assets/matTLRocks.mat"),
                 detailMat2,
                 Assets.LoadRecolor("RoR2/DLC2/lakes/Assets/matTLGVine.mat", new(255, 255, 255, 255)),
                 Assets.Load<Material>("RoR2/DLC2/lakes/Assets/matTLGrassSparseBlue.mat")
             );
-        }
-        public static void AltarMaterials(Material terrainMat, Material detailMat, Material detailMat2, Material detailMat3, Material grassMat2)
-        {
-            MeshRenderer[] meshList = Resources.FindObjectsOfTypeAll(typeof(MeshRenderer)) as MeshRenderer[];
-            foreach (MeshRenderer renderer in meshList)
-            {
-                GameObject meshBase = renderer.gameObject;
-                if (meshBase != null)
-                {
-                    if (grassMat2 && meshBase.name.Contains("GrassTall") && renderer.sharedMaterial)
-                    {
-                        renderer.sharedMaterial = grassMat2;
-                    }
-                    if ((meshBase.name.Contains("LTTerrain") || meshBase.name.Contains("Dune")) && renderer.sharedMaterial)
-                    {
-                        renderer.sharedMaterial = terrainMat;
-                    }
-                    if ((meshBase.name.Contains("LTCeiling") || meshBase.name.Contains("LTTemple") || meshBase.name.Contains("Altar") || meshBase.name.Contains("Arches") || meshBase.name.Contains("LTColumn") || meshBase.name.Contains("LTStairs")) && renderer.sharedMaterial)
-                    {
-                        renderer.sharedMaterial = detailMat2;
-                    }
-                    if ((meshBase.name.Contains("LTCeilingRoots") || meshBase.name.Contains("Tube")) && renderer.sharedMaterial)
-                    {
-                        renderer.sharedMaterial = detailMat3;
-                    }
-                    if ((meshBase.name.Contains("Gold") || meshBase.name.Contains("Boulder") || meshBase.name.Contains("Coral") || meshBase.name.Contains("Crystal")) && renderer.sharedMaterial)
-                    {
-                        renderer.sharedMaterial = detailMat;
-                    }
-                }
-            }
         }
     }   
 }

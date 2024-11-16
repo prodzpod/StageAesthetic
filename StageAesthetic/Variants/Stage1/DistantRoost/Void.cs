@@ -40,7 +40,7 @@ namespace StageAesthetic.Variants.Stage1.DistantRoost
             var s = GameObject.Find("SKYBOX").transform;
             s.GetChild(6).gameObject.SetActive(false);
             s.GetChild(11).gameObject.SetActive(false);
-            DistantRoost.Vanilla.VanillaFoliage();
+            Common.VanillaFoliage();
             VoidMaterials();
         }
         public override void DoWeather(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)

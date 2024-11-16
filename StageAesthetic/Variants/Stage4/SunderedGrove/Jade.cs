@@ -8,7 +8,7 @@ namespace StageAesthetic.Variants.Stage4.SunderedGrove
     {
         public override string[] Stages => ["rootjungle"];
         public override string Name => nameof(Jade);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "GREEN.";
         public override SoundType Ambience => SoundType.Wind;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -23,7 +23,7 @@ namespace StageAesthetic.Variants.Stage4.SunderedGrove
             sunLight.color = new Color32(152, 255, 255, 255);
             sunLight.intensity = 2f;
             sunTransform.localEulerAngles = new Vector3(60, 15, -4);
-            SunderedGrove.Vanilla.VanillaFoliage();
+            Common.VanillaFoliage();
         }
     }   
 }

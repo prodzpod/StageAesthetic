@@ -8,7 +8,7 @@ namespace StageAesthetic.Variants.Stage5.SkyMeadow
     {
         public override string[] Stages => ["skymeadow"];
         public override string Name => nameof(Abandoned);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Texture swap to Yellow Abandoned Aqueduct.";
         public override SoundType Ambience => SoundType.Wind;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -21,7 +21,7 @@ namespace StageAesthetic.Variants.Stage5.SkyMeadow
             fog.fogPower.value = 0.7f;
             fog.fogOne.value = 0.25f;
             fog.skyboxStrength.value = 0f;
-            Abyssal.ReplaceMaterials(
+            Common.ReplaceMaterials(
                 Assets.LoadRecolor("RoR2/Base/goolake/matGoolakeTerrain.mat", new Color32(230, 223, 174, 219)),
                 Assets.LoadRecolor("RoR2/Base/goolake/matGoolakeStoneTrimLightSand.mat", new Color32(255, 188, 160, 223)),
                 Assets.Load<Material>("RoR2/Base/goolake/matGoolakeStoneTrimSandy.mat"),

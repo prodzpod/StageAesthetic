@@ -7,7 +7,7 @@ namespace StageAesthetic.Variants.Stage1.TitanicPlains
     {
         public override string[] Stages => ["golemplains", "golemplains2"];
         public override string Name => nameof(Nostalgic);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Early Access look.";
         public override SoundType Ambience => SoundType.DayNature;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -21,18 +21,7 @@ namespace StageAesthetic.Variants.Stage1.TitanicPlains
             Debug.Log("NOSTALGIA PLAINS W");
             Debug.Log("NOSTALGIA PLAINS W");
             Debug.Log("NOSTALGIA PLAINS W");
-            VanillaFoliage();
-        }
-
-        public static void VanillaFoliage()
-        {
-            Assets.MeshReplaceAll([
-                new(["spmGPGrass_LOD0"], mr => mr.sharedMaterial.color = new Color32(96, 94, 32, 255)),
-                new(["spmBbDryBush_LOD0"], mr => {
-                    mr.sharedMaterial.color = new Color32(125, 125, 128, 255);
-                    if (mr.sharedMaterials.Length >= 2) mr.sharedMaterials[1].color = new Color32(125, 125, 128, 255);
-                })
-            ]);
+            Common.VanillaFoliage();
         }
     }
 }

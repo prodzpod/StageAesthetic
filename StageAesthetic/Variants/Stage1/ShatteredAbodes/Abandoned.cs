@@ -8,7 +8,7 @@ namespace StageAesthetic.Variants.Stage1.ShatteredAbodes
     {
         public override string[] Stages => ["village"];
         public override string Name => nameof(Abandoned);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Scorching Desert.";
         public override SoundType Ambience => SoundType.Wind;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -30,7 +30,7 @@ namespace StageAesthetic.Variants.Stage1.ShatteredAbodes
             sunLight.color = new Color(1f, 0.65f, 0.5f, 1f);
             sunLight.intensity = 1.6f;
             sunLight.shadowStrength = 0.7f;
-            Verdant.AbodesMaterials(
+            Common.AbodesMaterials(
                 Assets.LoadRecolor("RoR2/Base/goolake/matGoolakeTerrain.mat", new Color32(230, 223, 174, 125)), 
                 Assets.Load<Material>("RoR2/Base/goolake/matGoolake.mat"),
                 Assets.Load<Material>("RoR2/Base/goolake/matGoolakeStoneTrimLightSand.mat"),

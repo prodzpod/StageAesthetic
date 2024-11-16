@@ -8,7 +8,7 @@ namespace StageAesthetic.Variants.Stage3.SulfurPools
     {
         public override string[] Stages => ["sulfurpools"];
         public override string Name => nameof(Hell);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Texture swap to Red Aphelian Sanctuary.";
         public override SoundType Ambience => SoundType.Thunder;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -57,7 +57,7 @@ namespace StageAesthetic.Variants.Stage3.SulfurPools
                 if (go) go.SetActive(false);
             }
             //AddRain(RainType.Typhoon, true);
-            SulfurPools.Vanilla.VanillaWater();
+            Common.VanillaWater();
             HellMaterials();
         }
         public struct J(Transform t, int[] indices, Material mat)

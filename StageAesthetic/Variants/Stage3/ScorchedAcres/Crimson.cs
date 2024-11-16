@@ -8,9 +8,11 @@ namespace StageAesthetic.Variants.Stage3.ScorchedAcres
 {
     public class Crimson : Variant
     {
+        public override float PreLoopWeightDefault => 0;
+        public override float LoopWeightDefault => 0;
         public override string[] Stages => ["wispgraveyard"];
         public override string Name => nameof(Crimson);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Brings back the unreleased Scorched Acres' look (alt ver)";
         public override SoundType Ambience => SoundType.Void;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {

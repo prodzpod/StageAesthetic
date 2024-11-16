@@ -8,7 +8,7 @@ namespace StageAesthetic.Variants.Stage1.TitanicPlains
     {
         public override string[] Stages => ["golemplains", "golemplains2"];
         public override string Name => nameof(Night);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Blue and dark.";
         public override SoundType Ambience => SoundType.NightNature;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -30,7 +30,7 @@ namespace StageAesthetic.Variants.Stage1.TitanicPlains
             sunLight.intensity = 1.6f;
             sunLight.shadowStrength = 0.7f;
             sunTransform.localEulerAngles = new Vector3(38, 270, 97);
-            Nostalgic.VanillaFoliage();
+            Common.VanillaFoliage();
         }
         public override void DoWeather(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
             => Weather.AddRain(Intensity.Mild);

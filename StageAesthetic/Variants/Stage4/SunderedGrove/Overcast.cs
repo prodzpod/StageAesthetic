@@ -9,7 +9,7 @@ namespace StageAesthetic.Variants.Stage4.SunderedGrove
     {
         public override string[] Stages => ["rootjungle"];
         public override string Name => nameof(Overcast);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Rainy with extra fog.";
         public override SoundType Ambience => SoundType.Thunder;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -32,7 +32,7 @@ namespace StageAesthetic.Variants.Stage4.SunderedGrove
             // cgrade.colorFilter.value = new Color32(148, 206, 183, 255);
             //cgrade.colorFilter.overrideState = true;
 
-            SunderedGrove.Vanilla.VanillaFoliage();
+            Common.VanillaFoliage();
         }
         public override void DoWeather(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {

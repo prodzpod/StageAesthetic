@@ -10,7 +10,7 @@ namespace StageAesthetic.Variants.Stage3.ScorchedAcres
     {
         public override string[] Stages => ["wispgraveyard"];
         public override string Name => nameof(Night);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Dark purple with stars!";
         public override SoundType Ambience => SoundType.Thunder;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -28,7 +28,7 @@ namespace StageAesthetic.Variants.Stage3.ScorchedAcres
             sunLight.shadowStrength = 0.35f;
             sunLight.shadowBias = 0.05f;
             lightBase.Find("CameraRelative").Find("SunHolder").gameObject.SetActive(false);
-            var eclipse = FindEclipseGameObject(GameObject.Find("Weather, Wispgraveyard").scene);
+            var eclipse = Common.FindEclipseGameObject(GameObject.Find("Weather, Wispgraveyard").scene);
             if (eclipse != null)
             {
                 eclipse.SetActive(true);
@@ -53,20 +53,6 @@ namespace StageAesthetic.Variants.Stage3.ScorchedAcres
 
                 meshRenderer.material = coolerMat;
             }
-        }
-        public static GameObject FindEclipseGameObject(Scene scene)
-        {
-            GameObject go = null;
-            var rootGameObjects = scene.GetRootGameObjects();
-            for (int i = 0; i < rootGameObjects.Length; i++)
-            {
-                var rootGameObject = rootGameObjects[i];
-                if (rootGameObject.name == "Weather, Eclipse")
-                {
-                    go = rootGameObject;
-                }
-            }
-            return go;
         }
     }   
 }

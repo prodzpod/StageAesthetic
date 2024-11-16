@@ -10,7 +10,7 @@ namespace StageAesthetic.Variants.Stage3.ScorchedAcres
     {
         public override string[] Stages => ["wispgraveyard"];
         public override string Name => nameof(Jade);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Green fog with stars!";
         public override SoundType Ambience => SoundType.Wind;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -27,7 +27,7 @@ namespace StageAesthetic.Variants.Stage3.ScorchedAcres
             sunTransform.eulerAngles = new Vector3(75, 115, 180);
             lightBase.Find("CameraRelative").Find("SunHolder").gameObject.SetActive(false);
             lightBase.GetChild(1).GetChild(0).GetChild(0).gameObject.SetActive(false);
-            var eclipse = Night.FindEclipseGameObject(GameObject.Find("Weather, Wispgraveyard").scene);
+            var eclipse = Common.FindEclipseGameObject(GameObject.Find("Weather, Wispgraveyard").scene);
             if (eclipse != null)
             {
                 eclipse.SetActive(true);

@@ -8,7 +8,7 @@ namespace StageAesthetic.Variants.Stage2.AbandonedAqueduct
     {
         public override string[] Stages => ["goolake"];
         public override string Name => nameof(Sundered);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Texture swap to Pink Sundered Grove.";
         public override SoundType Ambience => SoundType.Rain;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {

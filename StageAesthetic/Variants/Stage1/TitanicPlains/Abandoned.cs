@@ -8,7 +8,7 @@ namespace StageAesthetic.Variants.Stage1.TitanicPlains
     {
         public override string[] Stages => ["golemplains", "golemplains2"];
         public override string Name => nameof(Abandoned);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Texture swap to Yellow Abandoned Aqueduct.";
         public override SoundType Ambience => SoundType.Wind;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -32,7 +32,7 @@ namespace StageAesthetic.Variants.Stage1.TitanicPlains
             var water = GameObject.Find("HOLDER: Water").transform.GetChild(0);
             water.localPosition = new Vector3(-564.78f, -170f, 133.4f);
             water.localScale = new Vector3(200f, 200f, 200f);
-            Nostalgic.VanillaFoliage();
+            Common.VanillaFoliage();
             Assets.MeshReplaceAll([
                 new(["Terrain", "Wall North"], mr => Assets.TryMeshReplace(mr, Assets.LoadRecolor("RoR2/Base/goolake/matGoolakeTerrain.mat", new Color32(230, 223, 174, 219)))),
                 new(["Rock", "Boulder", "mdlGeyser"], mr => Assets.TryMeshReplace(mr, Assets.Load<Material>("RoR2/Base/goolake/matGoolakeStoneTrimSandy.mat"))),

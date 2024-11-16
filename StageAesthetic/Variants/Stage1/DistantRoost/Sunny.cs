@@ -27,7 +27,7 @@ namespace StageAesthetic.Variants.Stage1.DistantRoost
                 GameObject.Find("SKYBOX").transform.GetChild(4).gameObject.SetActive(true);
                 GameObject.Find("HOLDER: Weather Particles").transform.Find("BBSkybox").Find("CameraRelative").Find("Rain").gameObject.SetActive(false);
             }
-            DistantRoost.Vanilla.VanillaFoliage();
+            Common.VanillaFoliage();
         }
     }
 }

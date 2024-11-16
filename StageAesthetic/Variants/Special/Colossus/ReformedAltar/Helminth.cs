@@ -7,7 +7,7 @@ namespace StageAesthetic.Variants.Special.Colossus.ReformedAltar
     {
         public override string[] Stages => ["lemuriantemple"];
         public override string Name => nameof(Helminth);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Dark and red.";
         public override SoundType Ambience => SoundType.Void;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -35,7 +35,7 @@ namespace StageAesthetic.Variants.Special.Colossus.ReformedAltar
             terrainMat.SetTexture("_BlueChannelTex", helminthTerrainMat.GetTexture("_GreenChannelTex"));
             Material detailMat2 = Object.Instantiate(Assets.Load<Material>("RoR2/DLC2/helminthroost/Assets/matHRWalls.mat"));
             detailMat2.shaderKeywords = ["DOUBLESAMPLE", "MICROFACET_SNOW", "USE_ALPHA_AS_MASK", "USE_VERTEX_COLORS", "USE_VERTICAL_BIAS", "BINARYBLEND"];
-            Verdant.AltarMaterials(
+            Common.AltarMaterials(
                 terrainMat,
                 Assets.Load<Material>("RoR2/DLC2/helminthroost/Assets/matHRRocks.mat"), 
                 detailMat2,

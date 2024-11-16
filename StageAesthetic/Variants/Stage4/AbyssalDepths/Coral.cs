@@ -10,7 +10,7 @@ namespace StageAesthetic.Variants.Stage4.AbyssalDepths
     {
         public override string[] Stages => ["dampcavesimple"];
         public override string Name => nameof(Coral);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Texture swap to Blue/Purple/Pink Sundered Grove.";
         public override SoundType Ambience => SoundType.Wind;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -33,7 +33,7 @@ namespace StageAesthetic.Variants.Stage4.AbyssalDepths
             ]);
             GameObject.Find("DCPPInTunnels").SetActive(false);
             // terrain detail, tree?, ruins
-            Blue.SimMaterials(
+            Common.SimMaterials(
                 Assets.Load<Material>("RoR2/DLC1/itdampcave/matDCTerrainFloorInfiniteTower.mat"),
                 Assets.Load<Material>("RoR2/Base/TitanGoldDuringTP/matGoldHeart.mat"),
                 Assets.Load<Material>("RoR2/DLC1/itdampcave/matDCTerrainWallsInfiniteTower.mat"),

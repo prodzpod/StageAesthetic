@@ -9,7 +9,7 @@ namespace StageAesthetic.Variants.Stage4.AbyssalDepths
     {
         public override string[] Stages => ["dampcavesimple"];
         public override string Name => nameof(Orange);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Pink with some orange and blue.";
         public override SoundType Ambience => SoundType.Void;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -28,14 +28,14 @@ namespace StageAesthetic.Variants.Stage4.AbyssalDepths
 
             var abyssalGoldTerrainMat = Object.Instantiate(Assets.Load<Material>("RoR2/Base/dampcave/matDCTerrainGiantColumns.mat"));
             abyssalGoldTerrainMat.SetTexture("_GreenChannelTex", Assets.Load<Texture2D>("RoR2/DLC1/itskymeadow/texSMGrassTerrainInfiniteTower.png"));
-            Blue.SimMaterials(
+            Common.SimMaterials(
                 abyssalGoldTerrainMat, 
                 Assets.Load<Material>("RoR2/Base/dampcavesimple/matDCBoulder.mat"), 
                 Assets.Load<Material>("RoR2/DLC1/itdampcave/matDCTerrainWallsInfiniteTower.mat"), 
                 Assets.Load<Material>("RoR2/Base/TitanGoldDuringTP/matGoldHeart.mat"), 
                 Assets.Load<Material>("RoR2/DLC1/itdampcave/matDCBoulderInfiniteTower.mat")
             );
-            Blue.LightChange(new Color(0.64f, 0.343f, 0.924f, 1), new Color(0.981f, 0.521f, 0.065f), new Color(0.598f, 0.117f, 0.355f));
+            Common.LightChange(new Color(0.64f, 0.343f, 0.924f, 1), new Color(0.981f, 0.521f, 0.065f), new Color(0.598f, 0.117f, 0.355f));
         }
     }   
 }

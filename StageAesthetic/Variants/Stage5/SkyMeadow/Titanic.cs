@@ -8,7 +8,7 @@ namespace StageAesthetic.Variants.Stage5.SkyMeadow
     {
         public override string[] Stages => ["skymeadow"];
         public override string Name => nameof(Titanic);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Texture swap to Titanic Plains.";
         public override SoundType Ambience => SoundType.DayNature;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -18,7 +18,7 @@ namespace StageAesthetic.Variants.Stage5.SkyMeadow
             fog.fogColorEnd.value = new Color32(94, 137, 195, 110);
             fog.fogZero.value = -0.02f;
             fog.skyboxStrength.value = 0.1f;
-            Abyssal.ReplaceMaterials(
+            Common.ReplaceMaterials(
                 Assets.Load<Material>("RoR2/Base/golemplains/matGPTerrain.mat"),
                 Assets.Load<Material>("RoR2/Base/golemplains/matGPTerrainBlender.mat"),
                 Assets.Load<Material>("RoR2/Base/golemplains/matGPBoulderMossyProjected.mat"),

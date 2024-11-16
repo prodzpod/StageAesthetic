@@ -8,7 +8,7 @@ namespace StageAesthetic.Variants.Stage3.SulfurPools
     {
         public override string[] Stages => ["sulfurpools"];
         public override string Name => nameof(Void);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Texture swap to Blue Void Fields.";
         public override SoundType Ambience => SoundType.Void;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {

@@ -8,7 +8,7 @@ namespace StageAesthetic.Variants.Stage3.FogboundLagoon
     {
         public override string[] Stages => ["FBLScene"];
         public override string Name => nameof(Overcast);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Very foggy with rain.";
         public override SoundType Ambience => SoundType.Thunder;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {

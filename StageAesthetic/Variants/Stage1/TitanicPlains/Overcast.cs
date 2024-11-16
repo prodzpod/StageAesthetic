@@ -8,7 +8,7 @@ namespace StageAesthetic.Variants.Stage1.TitanicPlains
     {
         public override string[] Stages => ["golemplains", "golemplains2"];
         public override string Name => nameof(Overcast);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Rainy with more fog.";
         public override SoundType Ambience => SoundType.Thunder;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -34,7 +34,7 @@ namespace StageAesthetic.Variants.Stage1.TitanicPlains
                 windZone.windMain = 0.4f;
                 windZone.windTurbulence = 0.8f;
             }
-            Nostalgic.VanillaFoliage();
+            Common.VanillaFoliage();
         }
         public override void DoWeather(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
             => Weather.AddRain(Intensity.Medium);

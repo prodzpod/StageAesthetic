@@ -19,11 +19,9 @@ namespace StageAesthetic.Variants.Stage2.AbandonedAqueduct
             sunLight.color = new Color32(255, 246, 229, 255);
             sunLight.intensity = 1.4f;
             sunTransform.localEulerAngles = new Vector3(42, 12, 180);
-            VanillaFoliage();
+            Common.VanillaFoliage();
         }
         public override void DoWeather(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
             => Weather.AddSand(Intensity.Mild);
-        public static void VanillaFoliage()
-            => Assets.ReplaceAll<LineRenderer>([new(_ => true, lr => lr.sharedMaterial.color = new Color32(141, 42, 42, 255))]);
     }
 }

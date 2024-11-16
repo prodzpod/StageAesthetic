@@ -11,7 +11,7 @@ namespace StageAesthetic.Variants.Stage4.SunderedGrove
     {
         public override string[] Stages => ["rootjungle"];
         public override string Name => nameof(Abandoned);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Texture swap to Orange Abandoned Aqueduct.";
         public override SoundType Ambience => SoundType.Wind;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {

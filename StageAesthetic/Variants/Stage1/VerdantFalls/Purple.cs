@@ -7,7 +7,7 @@ namespace StageAesthetic.Variants.Stage1.VerdantFalls
     {
         public override string[] Stages => ["lakes"];
         public override string Name => nameof(Sunny);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Purple sky with snow.";
         public override SoundType Ambience => SoundType.DayNature;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {

@@ -7,7 +7,7 @@ namespace StageAesthetic.Variants.Stage1.TitanicPlains
     {
         public override string[] Stages => ["golemplains", "golemplains2"];
         public override string Name => nameof(Sunset);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Orange sun over greenery.";
         public override SoundType Ambience => SoundType.Wind;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -23,7 +23,7 @@ namespace StageAesthetic.Variants.Stage1.TitanicPlains
             fog.fogZero.value = -0.02f;
             fog.fogOne.value = 0.05f;
             Assets.TryDestroy("Weather, Golemplains");
-            Nostalgic.VanillaFoliage();
+            Common.VanillaFoliage();
         }
     }
 }

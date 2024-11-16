@@ -8,7 +8,7 @@ namespace StageAesthetic.Variants.Stage1.SiphonedForest
     {
         public override string[] Stages => ["snowyforest"];
         public override string Name => nameof(Night);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Blue and dark.";
         public override SoundType Ambience => SoundType.NightNature;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -30,9 +30,9 @@ namespace StageAesthetic.Variants.Stage1.SiphonedForest
             sunLight.shadowStrength = 0.5f;
             cgrade.colorFilter.value = new Color32(110, 110, 140, 25);
             cgrade.colorFilter.overrideState = true;
-            SiphonedForest.Vanilla.VanillaFoliage();
+            Common.VanillaFoliage();
         }
         public override void DoWeather(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
-        { SiphonedForest.Vanilla.DisableSiphonedSnow(); Weather.AddSnow(Intensity.Heavy); }
+        { Common.DisableSiphonedSnow(); Weather.AddSnow(Intensity.Heavy); }
     }
 }

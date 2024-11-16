@@ -7,7 +7,7 @@ namespace StageAesthetic.Variants.Stage2.AbandonedAqueduct
     {
         public override string[] Stages => ["goolake"];
         public override string Name => nameof(Night);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "V1.0 version";
         public override SoundType Ambience => SoundType.NightNature;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -35,7 +35,7 @@ namespace StageAesthetic.Variants.Stage2.AbandonedAqueduct
             sunLight.shadowStrength = 0.6f;
             sun2.localEulerAngles = new Vector3(42, 12, 180);
             Assets.ReplaceAll<Light>([new(["CrystalLight"], l => l.color = new Color(0.221f, 0.961f, 0.925f))]);
-            AbandonedAqueduct.Vanilla.VanillaFoliage();
+            Common.VanillaFoliage();
         }
         public override void DoWeather(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {

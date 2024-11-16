@@ -7,7 +7,7 @@ namespace StageAesthetic.Variants.Stage2.WetlandAspect
     {
         public override string[] Stages => ["foggyswamp"];
         public override string Name => nameof(Night);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Green and dark.";
         public override SoundType Ambience => SoundType.Rain;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {

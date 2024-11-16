@@ -7,7 +7,7 @@ namespace StageAesthetic.Variants.Stage2.AbandonedAqueduct
     {
         public override string[] Stages => ["goolake"];
         public override string Name => "New Dawn";
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Dark orange.";
         public override SoundType Ambience => SoundType.DayNature;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -36,7 +36,7 @@ namespace StageAesthetic.Variants.Stage2.AbandonedAqueduct
             CaveFog.fogColorMid.value = new Color32(41, 17, 51, 125);
             CaveFog.fogColorEnd.value = new Color32(84, 31, 20, 200);
             Assets.ReplaceAll<Light>([new(["CrystalLight"], l => l.color = new Color(0.721f, 0.041f, 0.065f))]);
-            AbandonedAqueduct.Vanilla.VanillaFoliage();
+            Common.VanillaFoliage();
         }
         public override void DoWeather(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
             => Weather.AddSand(Intensity.Mild);

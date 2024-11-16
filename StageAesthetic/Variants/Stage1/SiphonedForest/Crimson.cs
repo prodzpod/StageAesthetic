@@ -8,7 +8,7 @@ namespace StageAesthetic.Variants.Stage1.SiphonedForest
     {
         public override string[] Stages => ["snowyforest"];
         public override string Name => nameof(Crimson);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Red fog with Doom vibes.";
         public override SoundType Ambience => SoundType.Rain;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -34,9 +34,9 @@ namespace StageAesthetic.Variants.Stage1.SiphonedForest
             Assets.TryDestroy(skybox, "Godrays");
             Assets.TryDestroy(skybox, "SFPortalCard");
             Assets.TryDestroy(skybox, "SFPortalCard (1)");
-            SiphonedForest.Vanilla.VanillaFoliage();
+            Common.VanillaFoliage();
         }
         public override void DoWeather(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
-        { SiphonedForest.Vanilla.DisableSiphonedSnow(); Weather.AddRain(Intensity.Extreme, true); }
+        { Common.DisableSiphonedSnow(); Weather.AddRain(Intensity.Extreme, true); }
     }
 }

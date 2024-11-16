@@ -60,7 +60,7 @@ namespace StageAesthetic.Variants.Stage1.DistantRoost
                     }
                 }
             }
-            DistantRoost.Vanilla.VanillaFoliage();
+            Common.VanillaFoliage();
         }
         public override void DoWeather(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
             => Weather.AddRain(Intensity.Extreme);

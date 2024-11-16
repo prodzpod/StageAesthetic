@@ -7,7 +7,7 @@ namespace StageAesthetic.Variants.Stage4.SirensCall
     {
         public override string[] Stages => ["shipgraveyard"];
         public override string Name => nameof(Overcast);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Rainy with more fog.";
         public override SoundType Ambience => SoundType.Thunder;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -17,7 +17,7 @@ namespace StageAesthetic.Variants.Stage4.SirensCall
             fog.fogColorEnd.value = new Color32(78, 94, 87, 255);
             fog.fogZero.value = -0.02f;
             fog.fogOne.value = 0.057f;
-            Night.ChangeGrassColor();
+            Common.ChangeGrassColor();
         }
     }   
 }

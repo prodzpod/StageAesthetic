@@ -8,7 +8,7 @@ namespace StageAesthetic.Variants.Stage4.AbyssalDepths
     {
         public override string[] Stages => ["dampcavesimple"];
         public override string Name => nameof(Night);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Dark blue with light fog.";
         public override SoundType Ambience => SoundType.NightNature;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
@@ -24,7 +24,7 @@ namespace StageAesthetic.Variants.Stage4.AbyssalDepths
             // cgrade.colorFilter.value = new Color32(119, 207, 181, 255);
             //cgrade.colorFilter.overrideState = true;
             // Lighting: Blue coral, cyan or green lighting otherwise
-            Blue.LightChange(new Color(0.188f, 0.444f, 0, 1), new Color(0.181f, 0.921f, 0.945f), new Color(0f, 0.837f, 0.14f));
+            Common.LightChange(new Color(0.188f, 0.444f, 0, 1), new Color(0.181f, 0.921f, 0.945f), new Color(0f, 0.837f, 0.14f));
         }
     }   
 }

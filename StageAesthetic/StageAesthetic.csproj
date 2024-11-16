@@ -59,21 +59,6 @@
   </ItemGroup>
 	
   <ItemGroup>
-    <Folder Include="Variants\Special\Bonus\ForgottenHaven\" />
-    <Folder Include="Variants\Special\Bonus\BulwarksAmbry\" />
-    <Folder Include="Variants\Special\Bonus\Bazaar\" />
-    <Folder Include="Variants\Special\Bonus\GildedCoast\" />
-    <Folder Include="Variants\Special\Endings\MomentFractured\" />
-    <Folder Include="Variants\Special\Endings\MomentWhole\" />
-    <Folder Include="Variants\Special\Endings\MomentHaunted\" />
-    <Folder Include="Variants\Special\Colossus\PrimeMeridian\" />
-    <Folder Include="Variants\Special\Endings\Planetarium\" />
-    <Folder Include="Variants\Stage2\AphelianSanctuary\" />
-    <Folder Include="Variants\Stage2\DryBasin\" />
-    <Folder Include="Variants\Stage5\SlumberingSatellite\" />
-  </ItemGroup>
-	
-  <ItemGroup>
     <None Include="Old\**\*.cs" />
   </ItemGroup>
 

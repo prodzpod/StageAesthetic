@@ -8,7 +8,7 @@ namespace StageAesthetic.Variants.Special.Colossus.TreebornColony
     {
         public override string[] Stages => ["habitat"];
         public override string Name => nameof(Overcast);
-        public override string Description => "Disabling removes vanilla from getting picked.";
+        public override string Description => "Foggy storm.";
         public override SoundType Ambience => SoundType.Thunder;
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
