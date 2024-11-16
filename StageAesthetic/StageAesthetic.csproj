@@ -77,16 +77,7 @@
     <Folder Include="Variants\Special\Colossus\ReformedAltar\" />
     <Folder Include="Variants\Stage2\AphelianSanctuary\" />
     <Folder Include="Variants\Stage2\DryBasin\" />
-    <Folder Include="Variants\Stage3\FogboundLagoon\" />
-    <Folder Include="Variants\Stage3\SulfurPools\" />
-    <Folder Include="Variants\Stage3\ScorchedAcres\" />
-    <Folder Include="Variants\Stage3\RallypointDelta\" />
-    <Folder Include="Variants\Stage4\AbyssalDepths\" />
-    <Folder Include="Variants\Stage4\SunderedGrove\" />
-    <Folder Include="Variants\Stage4\SirensCall\" />
-    <Folder Include="Variants\Stage5\HelminthHatchery\" />
     <Folder Include="Variants\Stage5\SlumberingSatellite\" />
-    <Folder Include="Variants\Stage5\SkyMeadow\" />
   </ItemGroup>
 	
   <ItemGroup>

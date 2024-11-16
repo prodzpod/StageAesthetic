@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using UnityEngine;
 
 namespace StageAesthetic
 {
@@ -42,6 +43,12 @@ namespace StageAesthetic
                     baseType.IsAssignableFrom(t)
                     ).ToList();
 
+        }
+        public static Transform GetDescendant(this Transform parent, params int[] idx)
+        {
+            var ret = parent;
+            foreach (var i in idx) ret = ret.GetChild(i);
+            return ret;
         }
     }
     public enum Stage

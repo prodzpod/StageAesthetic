@@ -72,6 +72,7 @@ namespace StageAesthetic
         {
             public Func<T, bool> Condition = condition;
             public Action<T> Action = action;
+            private Func<Light, bool> value;
             public ReplaceInstance(string[] keys, Action<T> action) : this(x => keys.Any(x.gameObject.name.Contains), action) { }
         }
     }

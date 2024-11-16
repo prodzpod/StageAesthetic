@@ -47,25 +47,15 @@ namespace StageAesthetic.Variants.Stage1.DistantRoost
                 }),
                 new(mr => mr.gameObject.name == "spmBbConif_LOD2", mr => mr.gameObject.SetActive(false)),
             ]);
-
-            var lightList = Object.FindObjectsOfType(typeof(Light)) as Light[];
-            foreach (Light light in lightList)
-            {
-                var lightBase = light.gameObject;
-                if (lightBase != null)
-                {
-                    var lightParent = lightBase.transform.parent;
-                    if (lightParent != null)
-                    {
-                        if (lightParent.gameObject.name.Equals("BbRuinBowl") || lightParent.gameObject.name.Equals("BbRuinBowl (1)") || lightParent.gameObject.name.Equals("BbRuinBowl (2)"))
-                        {
-                            light.color = new Color32(249, 212, 96, 225);
-                            light.intensity = 16f;
-                            light.range = 35f;
-                        }
-                    }
-                }
-            }
+            Assets.ReplaceAll<Light>([new(l => {
+                var lightParent = l.transform.parent.gameObject;
+                if (!lightParent) return false;
+                return lightParent.gameObject.name.Equals("BbRuinBowl") || lightParent.gameObject.name.Equals("BbRuinBowl (1)") || lightParent.gameObject.name.Equals("BbRuinBowl (2)");
+            }, l => {
+                l.color = new Color32(249, 212, 96, 225);
+                l.intensity = 16f;
+                l.range = 35f;
+            })]);
             AbyssalFoliage();
             AbyssalMaterials();
         }
