@@ -37,10 +37,10 @@ namespace StageAesthetic.Variants
             if (doWeather) DoWeather(scenename, fog, cgrade, volume, loop);
         }
         public virtual void DoWeather(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop) { }
-        public Variant()
+        public Variant() { Variants.Add(this); }
+        public void InitConfig()
         {
-            Variants.Add(this);
-            if (Stages.Length == 0) return; // unused
+            if (Stages.Length == 0 || !Hooks.SceneNames.ContainsKey(Stages[0])) return;
             var category = $"Stages {new string(':', (int)Hooks.SceneStage[Stages[0]])} {Hooks.SceneNames[Stages[0]]}";
             PreLoopWeight = ConfigManager.Bind(category, $"{Name} - Pre-Loop Weight", PreLoopWeightDefault, Description);
             LoopWeight = ConfigManager.Bind(category, $"{Name} - Post-Loop Weight", LoopWeightDefault, Description);

@@ -33,7 +33,7 @@ namespace StageAesthetic.Variants.Special.Bonus.VoidLocus
 
             var theLightCantSeemToUnderstandItCantSeemToKnow = GameObject.Find("Weather, Void Stage").transform.GetChild(6).GetChild(0).GetComponent<MeshRenderer>();
 
-            var newMat = Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/voidstage/matVoidStageSkyboxSphere, Bright Top.mat").WaitForCompletion());
+            var newMat = Object.Instantiate(Assets.Load<Material>("RoR2/DLC1/voidstage/matVoidStageSkyboxSphere, Bright Top.mat"));
             newMat.SetColor("_TintColor", new Color32(66, 0, 34, 255));
             newMat.SetFloat("_AlphaBias", 0.2f);
             newMat.SetFloat("_AlphaBoost", 11.9882f);

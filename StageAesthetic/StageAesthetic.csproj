@@ -50,11 +50,20 @@
 	  <Reference Include="FHCSharp">
 		  <HintPath>..\..\libs\FHCSharp-nstrip.dll</HintPath>
 	  </Reference>
+	  <Reference Include="R2API">
+	    <HintPath>..\..\libs\R2API-nstrip.dll</HintPath>
+	  </Reference>
+	  <Reference Include="R2API.SceneAsset">
+	    <HintPath>..\..\libs\R2API.SceneAsset-nstrip.dll</HintPath>
+	  </Reference>
 	  <Reference Include="RiskOfOptions">
 		  <HintPath>..\..\libs\RiskOfOptions-nstrip.dll</HintPath>
 	  </Reference>
 	  <Reference Include="Unity.Postprocessing.Runtime">
 		  <HintPath>..\..\libs\Unity.Postprocessing.Runtime-nstrip.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Unity.Postprocessing.Runtime">
+		  <HintPath>..\..\libs\Newtonsoft.Json-nstrip.dll</HintPath>
 	  </Reference>
   </ItemGroup>
 	

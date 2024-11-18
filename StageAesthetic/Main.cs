@@ -1,6 +1,7 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
+using HarmonyLib;
 using RoR2;
 using UnityEngine;
 [assembly: HG.Reflection.SearchableAttribute.OptIn]
@@ -19,6 +20,7 @@ namespace StageAesthetic
         public static ManualLogSource Log;
         public static PluginInfo pluginInfo;
         public static ConfigFile Config;
+        public static Harmony Harmony;
         public static Main Instance;
         private static AssetBundle _assetBundle;
         public static AssetBundle AssetBundle
@@ -36,6 +38,7 @@ namespace StageAesthetic
             Instance = this;
             pluginInfo = Info;
             Log = Logger;
+            Harmony = new(PluginGUID);
             ConfigManager.Init();
             Hooks.Init();
             RoR2Application.onLoad += Hooks.PostInit;

@@ -25,6 +25,11 @@ namespace StageAesthetic
         private static readonly GameObject voidStageSkybox = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/voidstage/Weather, Void Stage.prefab").WaitForCompletion(), "SAVoidSkybox", false);
         public static readonly GameObject sun = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/ancientloft/mdlAncientLoft_Terrain.fbx").WaitForCompletion().transform.GetChild(5).GetChild(0).gameObject, "SASun", false);
 
+        public static void Init() // janky workaround, TODO: clean this whole place up
+        {
+            Main.Log.LogDebug(new object[] { ppHelminth, ppScorched, ppPlainsRoost, ppSunset, ppSick, sunMat, sunsetSkyboxMat, spaceSkyboxMat, spaceStarsMat2, eclipseSkybox, noBullshitSkybox, planetariumSkybox, voidStageSkybox, sun });
+        }
+
         public static void SunnyDistantRoostSky()
         {
             GameObject skybox = Object.Instantiate(planetariumSkybox, Vector3.zero, Quaternion.identity);

@@ -47,7 +47,7 @@ namespace StageAesthetic.Variants.Stage3.ScorchedAcres
 
                 var meshRenderer = sphere.GetComponent<MeshRenderer>();
 
-                var coolerMat = new Material(Addressables.LoadAssetAsync<Material>("RoR2/Base/eclipseworld/matEclipseMoon.mat").WaitForCompletion());
+                var coolerMat = new Material(Assets.Load<Material>("RoR2/Base/eclipseworld/matEclipseMoon.mat"));
                 coolerMat.SetFloat("_AtmosphereStrength", 20f);
                 coolerMat.SetColor("_TintColor", new Color32(10, 10, 17, 255));
 

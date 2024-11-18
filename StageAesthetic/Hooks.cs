@@ -1,9 +1,15 @@
 ﻿using BepInEx.Configuration;
+using HarmonyLib;
+using Mono.Cecil.Cil;
+using MonoMod.Cil;
+using R2API;
 using RoR2;
 using RoR2.UI;
 using StageAesthetic.Variants;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Rendering.PostProcessing;
@@ -20,6 +26,7 @@ namespace StageAesthetic
         public static string currentVariantName = "";
         public static void Init()
         {
+            Main.Log.LogInfo("init");
             Assets.CloudRemap = Assets.Load<Shader>("RoR2/Base/Shaders/HGCloudRemap.shader");
             Assets.SnowTopped = Assets.Load<Shader>("RoR2/Base/Shaders/HGSnowTopped.shader"); // who's snow and why are they being topped
             Assets.GooLakeProfile = Assets.Load<PostProcessProfile>("RoR2/Base/title/PostProcessing/ppSceneGoolake.asset");
@@ -28,9 +35,13 @@ namespace StageAesthetic
             DisplayVariantName = ConfigManager.Bind("General", "Display Variant Name", true, "Display the variant name in the stage text.");
             AvoidDuplicateVariants = ConfigManager.Bind("General", "Avoid Duplicate Variants", true, "Remove the variant from the pool once it is rolled until all variant for that stage is rolled.");
             Variants.Stage5.SkyMeadow.Common.AddHook();
+            foreach (var t in Util.FindAllDerivedTypes<Variant>()) t.GetConstructor([]).Invoke(null);
+            Assets.Init();
         }
         public static void PostInit()
         {
+            Main.Log.LogInfo("Postinit");
+            Assets.DisableLoad = false;
             for (int i = 1; i <= 5; i++)
             {
                 SceneCollection sg = Assets.Load<SceneCollection>("RoR2/Base/SceneGroups/sgStage" + i + ".asset");
@@ -42,15 +53,22 @@ namespace StageAesthetic
                 SceneNames[s.cachedName] = Language.GetString(s.nameToken).Replace(": ", " - ");
                 if (!SceneStage.ContainsKey(s.cachedName)) SceneStage[s.cachedName] = Stage.Special;
             }
-            foreach (var t in Util.FindAllDerivedTypes<Variant>()) t.GetConstructor([]).Invoke(null);
+            foreach (var v in Variant.Variants) v.InitConfig();
         }
         public static void RollVariant(On.RoR2.SceneDirector.orig_Start orig, SceneDirector self)
         {
+            var v = RollVariantInternal();
+            orig(self);
+            currentVariantName = self.teleporterInstance ? v.Name : "";
+        }
+        public static Variant RollVariantInternal(string forceScene = "", string forceVariant = "")
+        {
+            currentVariantName = "";
             Variants.Stage5.SkyMeadow.Common.MaulingRockOverride = null;
             Variants.Stage5.SkyMeadow.Common.Rocks = [];
-            foreach (var a in Assets.CacheMaterial.Values) Object.Destroy(a); 
+            foreach (var a in Assets.CacheMaterial.Values) UnityEngine.Object.Destroy(a);
             Assets.CacheMaterial.Clear();
-            var sceneName = SceneManager.GetActiveScene().name;
+            var sceneName = string.IsNullOrWhiteSpace(forceScene) ? SceneManager.GetActiveScene().name : forceScene;
             var currentScene = SceneInfo.instance;
             PostProcessVolume volume = currentScene?.GetComponent<PostProcessVolume>();
             string[] names = ["PP + Amb", "PP, Global", "GlobalPostProcessVolume, Base", "PP+Amb"];
@@ -65,15 +83,21 @@ namespace StageAesthetic
                 volume.isGlobal = true;
                 volume.priority = 9999f;
             }
-            if (!volume || !volume.isActiveAndEnabled) { Main.Log.LogWarning("PPV Not Found, skipping"); orig(self); return; }
+            if (!volume || !volume.isActiveAndEnabled) { Main.Log.LogWarning("PPV Not Found, skipping"); return Variant.Vanilla; }
             var rampFog = volume.profile.GetSetting<RampFog>();
             var colorGrading = volume.profile.GetSetting<ColorGrading>() ?? volume.profile.AddSettings<ColorGrading>();
-            var loop = Run.instance.loopClearCount > 0;
-            var v = Variant.GetVariant(sceneName, loop);
+            var loop = (Run.instance?.loopClearCount ?? 0) > 0;
+            var v = string.IsNullOrWhiteSpace(forceVariant) ? Variant.GetVariant(sceneName, loop) : Variant.GetVariant(sceneName, forceVariant);
+            if (string.IsNullOrWhiteSpace(forceVariant))
+            {
+                currentVariantName = v.Name;
+                volume.profile.name = "SA Profile" + " (" + v.Name + ")";
+                // live loading :o
+                if (!Assets.PreloadedVariants.ContainsKey(sceneName)) Assets.PreloadedVariants[sceneName] = [];
+                if (!Assets.PreloadedVariants[sceneName].Contains(v.Name)) Assets.PreloadedVariants[sceneName].Add(v.Name);
+            }
             v.Apply(sceneName, rampFog, colorGrading, volume, loop);
-            volume.profile.name = "SA Profile" + " (" + v.Name + ")";
-            orig(self);
-            currentVariantName = self.teleporterInstance ? v.Name : "";
+            return v;
         }
         public static void AppendStageToken(On.RoR2.UI.AssignStageToken.orig_Start orig, AssignStageToken self)
         {

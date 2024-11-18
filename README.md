@@ -12,8 +12,9 @@ this mod is part of a port of [HIFU](https://hifuror2.carrd.co/)'s pair of mods 
 - Some unused stage props (most notably the border statues in Abandoned Aqueduct) may be enabled.
 - The mod currently features **84** visual variants.
 
-# Known Bugs
-- hi im prod and idk what happened in the previous verisons :3
+# Things have changed
+- a lot of commits were made between 1.0 and now and i am not that good at vfx and im not that used to what 1.0 looked like
+- please lmk via @pr_d at discord if some variants feel off or things r weird :3
 
 # Shoutouts
 - FMRadio11 for the codebase
