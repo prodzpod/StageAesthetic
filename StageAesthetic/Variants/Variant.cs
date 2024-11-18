@@ -1,5 +1,5 @@
-﻿using BepInEx.Configuration;
-using LoopVariants;
+﻿using BepInEx.Bootstrap;
+using BepInEx.Configuration;
 using RoR2;
 using System;
 using System.Collections.Generic;
@@ -73,11 +73,12 @@ namespace StageAesthetic.Variants
         public static Variant Vanilla => Variants.Find(x => x.Stages.Length == 0 && x.Name == "Vanilla");
         public static bool LoopVariantEnabled()
         {
-            if (!Run.instance) return false;
+            if (!Run.instance || !Chainloader.PluginInfos.ContainsKey("Wolfo.LoopVariants")) return false;
             string[] vanillaLoopVariants = ["lakesnight", "villagenight", "habitatfall"];
             if (vanillaLoopVariants.Contains(SceneCatalog.currentSceneDef.cachedName)) return false;
-            return Run.instance.GetComponent<LoopVariantsMain.SyncLoopWeather>().CurrentStage_LoopVariant;
+            return LoopVariantEnabledInternal();
         }
+        public static bool LoopVariantEnabledInternal() => Run.instance.GetComponent<LoopVariants.LoopVariantsMain.SyncLoopWeather>().CurrentStage_LoopVariant;
     }
     public class Vanilla : Variant
     {

@@ -1,3 +1,6 @@
+# 1.1.4 Patch Notes
+- accidentally made wloopweather hard dependent (lol)
+
 # 1.1.3 Patch Notes
 - removed janky hack
 - instead we are loading every ror2 materials beforehand (hopefully no more pink bug)
