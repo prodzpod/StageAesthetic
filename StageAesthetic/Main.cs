@@ -16,7 +16,7 @@ namespace StageAesthetic
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "HIFU";
         public const string PluginName = "StageAesthetic";
-        public const string PluginVersion = "1.1.0";
+        public const string PluginVersion = "1.1.1";
         public static ManualLogSource Log;
         public static PluginInfo pluginInfo;
         public static ConfigFile Config;

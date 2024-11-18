@@ -48,7 +48,7 @@ namespace StageAesthetic.Variants.Stage1.DistantRoost
                 new(mr => mr.gameObject.name == "spmBbConif_LOD2", mr => mr.gameObject.SetActive(false)),
             ]);
             Assets.ReplaceAll<Light>([new(l => {
-                var lightParent = l.transform.parent.gameObject;
+                var lightParent = l.transform.parent;
                 if (!lightParent) return false;
                 return lightParent.gameObject.name.Equals("BbRuinBowl") || lightParent.gameObject.name.Equals("BbRuinBowl (1)") || lightParent.gameObject.name.Equals("BbRuinBowl (2)");
             }, l => {
@@ -98,8 +98,8 @@ namespace StageAesthetic.Variants.Stage1.DistantRoost
         {
             Assets.MeshReplaceAll([
                 new(mr => {
-                    var meshParent = mr.transform.parent.gameObject;
-                    return meshParent && meshParent.name.Contains("Pillar") && meshParent.transform.Find("Foam") != null;
+                    var meshParent = mr.transform.parent;
+                    return meshParent && meshParent.gameObject.name.Contains("Pillar") && meshParent.Find("Foam") != null;
                 }, mr => mr.transform.parent.Find("Foam").gameObject.SetActive(false)),
                 new(mr => mr.transform.parent && mr.transform.parent.gameObject.name.Contains("terrain") && mr.gameObject.name.Contains("Pillar"),
                     mr => Assets.TryMeshReplace(mr, Assets.LoadRecolor("RoR2/Base/dampcave/matDCTerrainGiantColumns.mat", new Color32(0, 0, 0, 204)))),

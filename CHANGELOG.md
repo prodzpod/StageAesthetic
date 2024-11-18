@@ -1,3 +1,6 @@
+# 1.1.1 Patch Notes
+- Distant Roost (Abyssal) doesnt error
+
 # 1.1.0 Patch Notes
 - ![:p_hi:](https://raw.githubusercontent.com/prodzpod/StageAesthetic/refs/heads/main/p_hi.png)
 - works for SotS
