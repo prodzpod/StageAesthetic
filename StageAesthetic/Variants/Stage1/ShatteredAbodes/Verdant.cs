@@ -5,7 +5,7 @@ namespace StageAesthetic.Variants.Stage1.ShatteredAbodes
 {
     public class Verdant : Variant
     {
-        public override string[] Stages => ["village"];
+        public override string[] Stages => ["village", "villagenight"];
         public override string Name => nameof(Verdant);
         public override string Description => "Sunny and bright green.";
         public override SoundType Ambience => SoundType.Wind;
@@ -21,8 +21,11 @@ namespace StageAesthetic.Variants.Stage1.ShatteredAbodes
             fog.fogPower.value = 0.5f;
             fog.skyboxStrength.value = 0f;
 
-            GameObject rainParticles = GameObject.Find("CAMERA PARTICLES: RainParticles (1)");
-            rainParticles.SetActive(false);
+            if (scenename == "village")
+            {
+                GameObject rainParticles = GameObject.Find("CAMERA PARTICLES: RainParticles (1)");
+                rainParticles.SetActive(false);
+            }
             GameObject sun = GameObject.Find("Directional Light (SUN)");
             sun.transform.eulerAngles = new Vector3(60f, 65f, 210f);
             var sunLight = sun.GetComponent<Light>();

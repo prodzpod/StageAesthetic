@@ -6,7 +6,7 @@ namespace StageAesthetic.Variants.Special.Colossus.TreebornColony
 {
     public class Overcast : Variant
     {
-        public override string[] Stages => ["habitat"];
+        public override string[] Stages => ["habitat", "habitatfall"];
         public override string Name => nameof(Overcast);
         public override string Description => "Foggy storm.";
         public override SoundType Ambience => SoundType.Thunder;
@@ -24,7 +24,7 @@ namespace StageAesthetic.Variants.Special.Colossus.TreebornColony
             fog.fogZero.value = -0.02f;
             fog.fogOne.value = 0.05f;
 
-            GameObject.Find("BHGodRay").SetActive(false);
+            if (scenename == "habitat") GameObject.Find("BHGodRay").SetActive(false);
             GameObject.Find("Directional Light (SUN)").GetComponent<Light>().color = new Color(0.7529f, 0.7137f, 0.6157f, 1);
             GameObject.Find("meshBHFog").GetComponent<MeshRenderer>().sharedMaterial = Assets.Load<Material>("RoR2/DLC2/meridian/Assets/matPMStormCloud.mat");
             GameObject wind = GameObject.Find("WindZone");

@@ -11,12 +11,13 @@ namespace StageAesthetic
     [BepInDependency(RiskOfOptions.PluginInfo.PLUGIN_GUID)]
     [BepInDependency("JaceDaDorito.FBLStage", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("PlasmaCore.ForgottenRelics", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("Wolfo.LoopVariants", BepInDependency.DependencyFlags.SoftDependency)]
     public class Main : BaseUnityPlugin
     {
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "HIFU";
         public const string PluginName = "StageAesthetic";
-        public const string PluginVersion = "1.1.1";
+        public const string PluginVersion = "1.1.2";
         public static ManualLogSource Log;
         public static PluginInfo pluginInfo;
         public static ConfigFile Config;

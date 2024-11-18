@@ -50,6 +50,9 @@
 	  <Reference Include="FHCSharp">
 		  <HintPath>..\..\libs\FHCSharp-nstrip.dll</HintPath>
 	  </Reference>
+	  <Reference Include="LoopVariants">
+	    <HintPath>..\..\libs\LoopVariants-nstrip.dll</HintPath>
+	  </Reference>
 	  <Reference Include="R2API">
 	    <HintPath>..\..\libs\R2API-nstrip.dll</HintPath>
 	  </Reference>

@@ -6,7 +6,7 @@ namespace StageAesthetic.Variants.Stage1.ShatteredAbodes
 {
     public class Abandoned : Variant
     {
-        public override string[] Stages => ["village"];
+        public override string[] Stages => ["village", "villagenight"];
         public override string Name => nameof(Abandoned);
         public override string Description => "Scorching Desert.";
         public override SoundType Ambience => SoundType.Wind;

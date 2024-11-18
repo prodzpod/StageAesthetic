@@ -5,7 +5,7 @@ namespace StageAesthetic.Variants.Stage1.VerdantFalls
 {
     public class Purple : Variant
     {
-        public override string[] Stages => ["lakes"];
+        public override string[] Stages => ["lakes", "lakesnight"];
         public override string Name => nameof(Purple);
         public override string Description => "Purple sky with snow.";
         public override SoundType Ambience => SoundType.WaterStream;
@@ -14,7 +14,7 @@ namespace StageAesthetic.Variants.Stage1.VerdantFalls
             base.Apply(scenename, fog, cgrade, volume, loop);
             Skybox.VoidSky();
             GameObject.Find("TLTerrainOuterDistant").SetActive(false);
-            GameObject tmp = GameObject.Find("Weather, Lakes");
+            GameObject tmp = GameObject.Find("Weather, Lakes") ?? GameObject.Find("Weather, Lakesnight");
             var sun = tmp.transform.Find("Directional Light (SUN)").gameObject;
             var probe = tmp.transform.Find("Reflection Probe").gameObject;
             sun.SetActive(true);

@@ -75,7 +75,7 @@ namespace StageAesthetic
             foreach (var name in names) volume = TryAlternative(volume, name);
             volume = TryAlternative(volume, GameObject.Find("MapZones")?.transform?.Find("PostProcess Zones")?.Find("SandOvercast")?.gameObject);
             volume = TryAlternative(volume, GameObject.Find("MapZones")?.transform?.Find("PostProcess Zones")?.Find("Sandstorm")?.gameObject);
-            if (sceneName == "moon2")
+            if (!volume && sceneName == "moon2")
             {
                 volume = currentScene.gameObject.AddComponent<PostProcessVolume>();
                 volume.profile.AddSettings<RampFog>();

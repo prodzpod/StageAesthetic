@@ -5,7 +5,7 @@ namespace StageAesthetic.Variants.Stage1.VerdantFalls
 {
     public class Sunny : Variant
     {
-        public override string[] Stages => ["lakes"];
+        public override string[] Stages => ["lakes", "lakesnight"];
         public override string Name => nameof(Sunny);
         public override string Description => "Sunny and bright.";
         public override SoundType Ambience => SoundType.DayNature;

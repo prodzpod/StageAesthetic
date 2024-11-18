@@ -1,3 +1,8 @@
+# 1.1.2 Patch Notes
+- Commencement errors upon reentry
+- Better interaction with WLoopWeather (if wloop is active for that stage it only picks vanilla)
+- Viscous Falls / Disturbed Impact / Golden Dieback also gets variants now
+
 # 1.1.1 Patch Notes
 - Distant Roost (Abyssal) doesnt error
 

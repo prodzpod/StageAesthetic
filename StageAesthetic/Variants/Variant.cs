@@ -1,4 +1,5 @@
 ﻿using BepInEx.Configuration;
+using LoopVariants;
 using RoR2;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace StageAesthetic.Variants
         public ConfigEntry<float> PreLoopWeight;
         public virtual float LoopWeightDefault => 1;
         public ConfigEntry<float> LoopWeight;
-        public ConfigEntry<EnableConfig> WeatherCondition;
+        public ConfigEntry<EnableConfig> WeatherCondition = null;
         public virtual string[] Stages => [];
         // IMPORTANT: the first entry MUST be a normal stage or intermission, simulacrum variants go second
         public virtual string Name => "";
@@ -26,6 +27,7 @@ namespace StageAesthetic.Variants
             Main.Log.LogInfo($"Loading {Hooks.SceneNames[scenename]} ({Name})");
             Weather.StopSounds();
             Weather.PlaySound(Ambience);
+            if (WeatherCondition == null) return;
             var doWeather = WeatherCondition.Value switch
             {
                 EnableConfig.Enable => true,
@@ -60,7 +62,7 @@ namespace StageAesthetic.Variants
                 var weight = loop ? v.LoopWeight.Value : v.PreLoopWeight.Value;
                 if (weight <= 0) continue; w.AddChoice(v, weight);
             }
-            if (w.choices.Length == 0) return Vanilla;
+            if (LoopVariantEnabled() || w.choices.Length == 0) return Vanilla;
             if (!Hooks.AvoidDuplicateVariants.Value) return w.Evaluate(Run.instance.stageRng.nextNormalizedFloat);
             if (!VariantsRolled.ContainsKey(stage) || VariantsRolled[stage].Count == w.choices.Length) VariantsRolled[stage] = [];
             WeightedSelection<Variant> w2 = new();
@@ -69,10 +71,18 @@ namespace StageAesthetic.Variants
         }
         public static Variant GetVariant(string stage, string name) => Variants.TryFind(x => x.Stages.Contains(stage) && x.Name.ToLower() == name.ToLower()) ?? Vanilla;
         public static Variant Vanilla => Variants.Find(x => x.Stages.Length == 0 && x.Name == "Vanilla");
+        public static bool LoopVariantEnabled()
+        {
+            if (!Run.instance) return false;
+            string[] vanillaLoopVariants = ["lakesnight", "villagenight", "habitatfall"];
+            if (vanillaLoopVariants.Contains(SceneCatalog.currentSceneDef.cachedName)) return false;
+            return Run.instance.GetComponent<LoopVariantsMain.SyncLoopWeather>().CurrentStage_LoopVariant;
+        }
     }
     public class Vanilla : Variant
     {
         public override string Name => nameof(Vanilla);
+        public override string[] Stages => [];
         public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop) { base.Apply(scenename, fog, cgrade, volume, loop); }
     }
     public enum EnableConfig

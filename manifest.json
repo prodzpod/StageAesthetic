@@ -1,0 +1,12 @@
+{
+  "name": "StageAesthetic",
+  "version_number": "1.1.2",
+  "website_url": "https://github.com/prodzpod/StageAesthetic",
+  "description": "Adds randomly-selected color schemes to stages.",
+  "dependencies": [
+    "bbepis-BepInExPack-5.4.2113",
+    "RiskofThunder-HookGenPatcher-1.2.3",
+    "Rune580-Risk_Of_Options-2.7.0",
+    "RiskofThunder-R2API_SceneAsset-1.1.2"
+  ]
+}
