@@ -36,12 +36,11 @@ namespace StageAesthetic
             AvoidDuplicateVariants = ConfigManager.Bind("General", "Avoid Duplicate Variants", true, "Remove the variant from the pool once it is rolled until all variant for that stage is rolled.");
             Variants.Stage5.SkyMeadow.Common.AddHook();
             foreach (var t in Util.FindAllDerivedTypes<Variant>()) t.GetConstructor([]).Invoke(null);
-            Assets.Init();
         }
         public static void PostInit()
         {
             Main.Log.LogInfo("Postinit");
-            Assets.DisableLoad = false;
+            Assets.Init();
             for (int i = 1; i <= 5; i++)
             {
                 SceneCollection sg = Assets.Load<SceneCollection>("RoR2/Base/SceneGroups/sgStage" + i + ".asset");
@@ -92,9 +91,6 @@ namespace StageAesthetic
             {
                 currentVariantName = v.Name;
                 volume.profile.name = "SA Profile" + " (" + v.Name + ")";
-                // live loading :o
-                if (!Assets.PreloadedVariants.ContainsKey(sceneName)) Assets.PreloadedVariants[sceneName] = [];
-                if (!Assets.PreloadedVariants[sceneName].Contains(v.Name)) Assets.PreloadedVariants[sceneName].Add(v.Name);
             }
             v.Apply(sceneName, rampFog, colorGrading, volume, loop);
             return v;

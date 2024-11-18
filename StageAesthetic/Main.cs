@@ -4,6 +4,7 @@ using BepInEx.Logging;
 using HarmonyLib;
 using RoR2;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 [assembly: HG.Reflection.SearchableAttribute.OptIn]
 namespace StageAesthetic
 {
@@ -17,7 +18,7 @@ namespace StageAesthetic
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "HIFU";
         public const string PluginName = "StageAesthetic";
-        public const string PluginVersion = "1.1.2";
+        public const string PluginVersion = "1.1.3";
         public static ManualLogSource Log;
         public static PluginInfo pluginInfo;
         public static ConfigFile Config;

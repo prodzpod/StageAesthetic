@@ -1,3 +1,7 @@
+# 1.1.3 Patch Notes
+- removed janky hack
+- instead we are loading every ror2 materials beforehand (hopefully no more pink bug)
+
 # 1.1.2 Patch Notes
 - Commencement errors upon reentry
 - Better interaction with WLoopWeather (if wloop is active for that stage it only picks vanilla)
