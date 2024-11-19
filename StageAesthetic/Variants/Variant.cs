@@ -62,7 +62,7 @@ namespace StageAesthetic.Variants
                 var weight = loop ? v.LoopWeight.Value : v.PreLoopWeight.Value;
                 if (weight <= 0) continue; w.AddChoice(v, weight);
             }
-            if (LoopVariantEnabled() || w.choices.Length == 0) return Vanilla;
+            if (LoopVariantEnabled() || w.choices.All(x => x.weight == 0)) return Vanilla;
             if (!Hooks.AvoidDuplicateVariants.Value) return w.Evaluate(Run.instance.stageRng.nextNormalizedFloat);
             if (!VariantsRolled.ContainsKey(stage) || VariantsRolled[stage].Count == w.choices.Length) VariantsRolled[stage] = [];
             WeightedSelection<Variant> w2 = new();
@@ -84,7 +84,7 @@ namespace StageAesthetic.Variants
     {
         public override string Name => nameof(Vanilla);
         public override string[] Stages => [];
-        public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop) { base.Apply(scenename, fog, cgrade, volume, loop); }
+        public override void Apply(string scenename, RampFog fog, ColorGrading cgrade, PostProcessVolume volume, bool loop) { }
     }
     public enum EnableConfig
     {

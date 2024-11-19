@@ -1,3 +1,6 @@
+# 1.1.6 Patch Notes
+- no longer throws errors when there is no variants
+
 # 1.1.5 Patch Notes
 - variant fail doesnt crash the stage anymore
 - fixed forgotten relics hard dependency (weirder than wloopweather one)

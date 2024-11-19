@@ -93,7 +93,7 @@ namespace StageAesthetic
                 volume.profile.name = "SA Profile" + " (" + v.Name + ")";
             }
             try { v.Apply(sceneName, rampFog, colorGrading, volume, loop); }
-            catch { Main.Log.LogWarning("Variant application failed! some stuff may look weird..."); }
+            catch (Exception e) { Main.Log.LogError(e);  Main.Log.LogWarning("Variant application failed! some stuff may look weird..."); }
             return v;
         }
         public static void AppendStageToken(On.RoR2.UI.AssignStageToken.orig_Start orig, AssignStageToken self)
