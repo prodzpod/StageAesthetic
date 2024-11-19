@@ -1,3 +1,7 @@
+# 1.1.5 Patch Notes
+- variant fail doesnt crash the stage anymore
+- fixed forgotten relics hard dependency (weirder than wloopweather one)
+
 # 1.1.4 Patch Notes
 - accidentally made wloopweather hard dependent (lol)
 

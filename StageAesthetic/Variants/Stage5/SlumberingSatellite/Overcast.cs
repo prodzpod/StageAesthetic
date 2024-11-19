@@ -1,6 +1,4 @@
-﻿using FRCSharp;
-using System.Drawing;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
 namespace StageAesthetic.Variants.Stage5.SlumberingSatellite
@@ -11,9 +9,10 @@ namespace StageAesthetic.Variants.Stage5.SlumberingSatellite
         public override string Name => nameof(Overcast);
         public override string Description => "Rainy with more fog.";
         public override SoundType Ambience => SoundType.Thunder;
-        public override void Apply(string scenename, TheCoolerRampFog fog, RampFog fog2, ColorGrading cgrade, PostProcessVolume volume, bool loop)
+        public override void Apply(string scenename, object _fog, RampFog fog2, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
-            base.Apply(scenename, fog, fog2, cgrade, volume, loop);
+            base.Apply(scenename, _fog, fog2, cgrade, volume, loop);
+            var fog = (FRCSharp.TheCoolerRampFog)_fog;
             var sun = GameObject.Find("Directional Light (SUN)").GetComponent<Light>();
             sun.color = new Color32(160, 255, 208, 255);
             sun.intensity = 1f;

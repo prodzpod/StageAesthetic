@@ -1,5 +1,4 @@
-﻿using FRCSharp;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
 namespace StageAesthetic.Variants.Stage2.DryBasin
@@ -10,9 +9,10 @@ namespace StageAesthetic.Variants.Stage2.DryBasin
         public override string Name => nameof(Blue);
         public override string Description => "Blue.";
         public override SoundType Ambience => SoundType.DayNature;
-        public override void Apply(string scenename, TheCoolerRampFog fog, RampFog fog2, ColorGrading cgrade, PostProcessVolume volume, bool loop)
+        public override void Apply(string scenename, object _fog, RampFog fog2, ColorGrading cgrade, PostProcessVolume volume, bool loop)
         {
-            base.Apply(scenename, fog, fog2, cgrade, volume, loop);
+            base.Apply(scenename, _fog, fog2, cgrade, volume, loop);
+            var fog = (FRCSharp.TheCoolerRampFog)_fog;
             var sun = GameObject.Find("Directional Light (SUN)").GetComponent<Light>();
             sun.name = "Shitty Not Working Sun";
             var sun2 = Object.Instantiate(sun);
