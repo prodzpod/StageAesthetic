@@ -7,6 +7,8 @@ namespace StageAesthetic.Variants.Stage4.AbyssalDepths
 {
     public class Orange : Variant
     {
+        public override float PreLoopWeightDefault => 0;
+        public override float LoopWeightDefault => 0;
         public override string[] Stages => ["dampcavesimple"];
         public override string Name => nameof(Orange);
         public override string Description => "Pink with some orange and blue.";

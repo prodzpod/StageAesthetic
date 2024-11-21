@@ -30,10 +30,10 @@ namespace StageAesthetic.Variants.Stage4.SunderedGrove
             c.GetChild(0).GetComponent<MeshRenderer>().sharedMaterial = Assets.Load<Material>("RoR2/Base/Common/matClayGooDebuff.mat");
             Assets.ReplaceAll<SkinnedMeshRenderer>([new(["BounceStem"], mr => { if (mr.sharedMaterial) mr.sharedMaterial = Assets.Load<Material>("RoR2/Base/Common/matClayGooDebuff.mat"); })]);
             Assets.MeshReplaceAll([
-                new(["Terrain", "Gianticus", "Tree Big Bottom", "Tree D", "Wall", "RJRoot", "RJShroomShelf"], mr => Assets.TryMeshReplace(mr, Assets.LoadRecolor("RoR2/Base/goolake/matGoolakeTerrain.mat", new Color32(255, 222, 185, 39)))),
-                new(["RJTriangle", "BbRuinArch", "RJShroomBig", "Rock", "Boulder", "Pebble", "Root Bridge", "Vine Tree"], mr => Assets.TryMeshReplace(mr, Assets.LoadRecolor("RoR2/Base/goolake/matGoolakeStoneTrimLightSand.mat", new Color32(166, 157, 27, 59)))),
-                new(["Moss Cover", "RJShroomShelf", "RJShroomBig", "RJShroomSmall", "RJMossPatch"], mr => Assets.TryMeshReplace(mr, Assets.LoadRecolor("RoR2/Base/goolake/matGoolake.mat", new Color32(176, 153, 57, 255)))),
-                new(["RJTwistedTreeBig"], mr => Assets.TryMeshReplace(mr, Assets.LoadRecolor("RoR2/Base/goolake/matGoolakeTerrain.mat", new Color32(255, 222, 185, 39)))),
+                new(["Terrain", "Gianticus", "Tree Big Bottom", "Tree D", "Wall", "RJ_Root", "RJ_ShroomShelf"], mr => Assets.TryMeshReplace(mr, Assets.LoadRecolor("RoR2/Base/goolake/matGoolakeTerrain.mat", new Color32(255, 222, 185, 39)))),
+                new(["RJ_Triangle", "RJ_RuinArch", "RJ_ShroomBig", "Rock", "Boulder", "Pebble", "Root Bridge", "Vine Tree"], mr => Assets.TryMeshReplace(mr, Assets.LoadRecolor("RoR2/Base/goolake/matGoolakeStoneTrimLightSand.mat", new Color32(166, 157, 27, 59)))),
+                new(["Moss Cover", "RJ_ShroomShelf", "RJ_ShroomBig", "RJ_ShroomSmall", "RJ_MossPatch"], mr => Assets.TryMeshReplace(mr, Assets.LoadRecolor("RoR2/Base/goolake/matGoolake.mat", new Color32(176, 153, 57, 255)))),
+                new(["RJ_TwistedTreeBig"], mr => Assets.TryMeshReplace(mr, Assets.LoadRecolor("RoR2/Base/goolake/matGoolakeTerrain.mat", new Color32(255, 222, 185, 39)))),
             ]);
             Assets.ReplaceAll<Light>([new(_ => true,l => {
                 l.color = new Color32(255, 131, 117, 255);

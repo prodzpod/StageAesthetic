@@ -58,7 +58,6 @@ namespace StageAesthetic
         {
             var v = RollVariantInternal();
             orig(self);
-            currentVariantName = self.teleporterInstance ? v.Name : "";
         }
         public static Variant RollVariantInternal(string forceScene = "", string forceVariant = "")
         {
@@ -94,6 +93,7 @@ namespace StageAesthetic
             }
             try { v.Apply(sceneName, rampFog, colorGrading, volume, loop); }
             catch (Exception e) { Main.Log.LogError(e);  Main.Log.LogWarning("Variant application failed! some stuff may look weird..."); }
+            currentVariantName = v == Variant.Vanilla ? "" : v.Name;
             return v;
         }
         public static void AppendStageToken(On.RoR2.UI.AssignStageToken.orig_Start orig, AssignStageToken self)

@@ -105,7 +105,7 @@ namespace StageAesthetic.Variants.Stage1.DistantRoost
                     mr => Assets.TryMeshReplace(mr, Assets.LoadRecolor("RoR2/Base/dampcave/matDCTerrainGiantColumns.mat", new Color32(0, 0, 0, 204)))),
                 new(mr => mr.transform.parent && mr.transform.parent.gameObject.name.Equals("Foliage") && mr.gameObject.name.Contains("bbSimpleGrassPrefab"),
                     mr => mr.gameObject.SetActive(false)),
-                new(["Terrain", "Shelf"], mr => Assets.LoadRecolor("RoR2/Base/dampcave/matDCTerrainGiantColumns.mat", new Color32(0, 0, 0, 204))),
+                new(["Terrain", "Shelf"], mr => Assets.TryMeshReplace(mr, Assets.LoadRecolor("RoR2/Base/dampcave/matDCTerrainGiantColumns.mat", new Color32(0, 0, 0, 204)))),
                 new(["Boulder", "boulder", "Rock", "Step", "Tile", "mdlGeyser", "Bowl", "Marker", "DistantBridge", "Pebble"], mr => Assets.TryMeshReplace(mr, Assets.Load<Material>("RoR2/Base/dampcavesimple/matDCBoulder.mat"))),
                 new(["RuinGate", "RuinArch", "RuinPillar"], mr => Assets.TryMeshReplace(mr, Assets.Load<Material>("RoR2/Base/TitanGoldDuringTP/matGoldHeart.mat"))),
                 new(["DistantPillar", "Cliff", "ClosePillar"], mr => Assets.TryMeshReplace(mr, Assets.LoadRecolor("RoR2/Base/dampcave/matDCTerrainWalls.mat", new Color32(0, 0, 0, 135)))),

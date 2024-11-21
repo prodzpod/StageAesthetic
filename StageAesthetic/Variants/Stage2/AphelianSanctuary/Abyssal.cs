@@ -46,14 +46,14 @@ namespace StageAesthetic.Variants.Stage2.AphelianSanctuary
             var meshList = Object.FindObjectsOfType(typeof(MeshRenderer)) as MeshRenderer[];
             var stupidList = Object.FindObjectsOfType(typeof(SkinnedMeshRenderer)) as SkinnedMeshRenderer[];
 
-            Assets.MeshReplaceAll([new(["CirclePot", "BrokenPot", "Planter", "AW_Cube", "Mesh, Cube", "AncientLoft_WaterFenceType", "Tile", "Rock", "Pillar", "Boulder", "Step", "LightStatue", "LightStatue_Stone", "FountainLG", "Shrine", "Sculpture"], mr => {
+            Assets.MeshReplaceAll([new(["CirclePot", "BrokenPot", "Planter", "AW_Cube", "Mesh, Cube", "AL_WaterFenceType", "Tile", "Rock", "Pillar", "Boulder", "Step", "LightStatue", "LightStatue_Stone", "FountainLG", "Shrine", "Sculpture"], mr => {
                     if (!mr.transform.parent) return;
                     var light = mr.gameObject.AddComponent<Light>();
                     light.color = new Color32(125, 43, 48, 225);
                     light.intensity = 6f;
                     light.range = 24f;
             })]);
-            Assets.ReplaceAll<SkinnedMeshRenderer>([new(["CirclePot", "Planter", "AW_Cube", "Mesh, Cube", "AncientLoft_WaterFenceType", "Tile", "RuinBlock", "Rock", "Pillar", "Boulder", "Step", "LightStatue", "LightStatue_Stone", "FountainLG", "Shrine", "Sculpture"], mr => {
+            Assets.ReplaceAll<SkinnedMeshRenderer>([new(["CirclePot", "Planter", "AW_Cube", "Mesh, Cube", "AL_WaterFenceType", "Tile", "RuinBlock", "Rock", "Pillar", "Boulder", "Step", "LightStatue", "LightStatue_Stone", "FountainLG", "Shrine", "Sculpture"], mr => {
                 var light = mr.gameObject.AddComponent<Light>();
                 light.color = new Color32(249, 212, 96, 225);
                 light.intensity = 6f;
@@ -82,11 +82,11 @@ namespace StageAesthetic.Variants.Stage2.AphelianSanctuary
                 }, mr => Assets.TryMeshReplace(mr, detailMat2)), // distantRoostAbyssalDetailMat
                 new(mr => mr.gameObject.name.Equals("Terrain") && mr.sharedMaterials.Length > 0, mr => Assets.MeshReplaceAll(mr, terrainMat)),
                 new(["Terrain", "Dirt", "TerrainPlatform"], mr => {
-                    if (mr.gameObject.name.Equals("Terrain")) return;
+                    // if (mr.gameObject.name.Equals("Terrain")) return;
                     Assets.TryMeshReplace(mr, terrainMat);
                 }),
                 new(["Platform", "Temple", "Bridge"], mr => mr.sharedMaterials = [detailMat2, terrainMat]),
-                new(["CirclePot", "BrokenPot", "Planter", "AW_Cube", "Mesh, Cube", "AncientLoft_WaterFenceType", "Pillar", "LightStatue", "FountainLG", "Shrine", "Sculpture", "AncientLoft_SculptureSM", "FountainSM"], 
+                new(["CirclePot", "BrokenPot", "Planter", "AW_Cube", "Mesh, Cube", "AL_WaterFenceType", "Pillar", "LightStatue", "FountainLG", "Shrine", "Sculpture", "AL_SculptureSM", "FountainSM"], 
                     mr => Assets.TryMeshReplace(mr, detailMat3)), // distantRoostAbyssalDetailMat2
                 new(["Tile", "Step", "Rock", "Pebble", "Rubble", "Boulder", "LightStatue_Stone"], mr => Assets.TryMeshReplace(mr, detailMat3)), // distantRoostAbyssalTerrainMat2
                 new(["CircleArchwayAnimatedMesh"], mr => {
@@ -95,7 +95,7 @@ namespace StageAesthetic.Variants.Stage2.AphelianSanctuary
                 })
             ]);
             Assets.ReplaceAll<SkinnedMeshRenderer>([
-                new(["CirclePot", "Planter", "AW_Cube", "Mesh, Cube", "AncientLoft_WaterFenceType", "RuinBlock", "Pillar", "LightStatue", "LightStatue_Stone", "FountainLG", "Shrine", "Sculpture"],
+                new(["CirclePot", "Planter", "AW_Cube", "Mesh, Cube", "AL_WaterFenceType", "RuinBlock", "Pillar", "LightStatue", "LightStatue_Stone", "FountainLG", "Shrine", "Sculpture"],
                     mr => mr.sharedMaterial = detailMat3),
                 new(["Rock", "Tile", "Boulder", "Step", "Pebble", "Rubble"], mr => mr.sharedMaterial = detailMat)
             ]);

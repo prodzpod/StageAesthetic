@@ -46,7 +46,7 @@ namespace StageAesthetic.Variants
             var category = $"Stages {new string(':', (int)Hooks.SceneStage[Stages[0]])} {Hooks.SceneNames[Stages[0]]}";
             PreLoopWeight = ConfigManager.Bind(category, $"{Name} - Pre-Loop Weight", PreLoopWeightDefault, Description);
             LoopWeight = ConfigManager.Bind(category, $"{Name} - Post-Loop Weight", LoopWeightDefault, Description);
-            WeatherCondition = ConfigManager.Bind(category, $"{Name} - Weather Effect", EnableConfig.Enable, Description);
+            WeatherCondition = ConfigManager.Bind(category, $"{Name} - Weather Effect", EnableConfig.Enable, "Enables weather effects for this variant.");
             Init(category);
         }
 
@@ -67,7 +67,8 @@ namespace StageAesthetic.Variants
             if (!VariantsRolled.ContainsKey(stage) || VariantsRolled[stage].Count == w.choices.Length) VariantsRolled[stage] = [];
             WeightedSelection<Variant> w2 = new();
             for (int i = 0; i < w.Count; i++) if (!VariantsRolled[stage].Contains(w.choices[i].value)) w2.AddChoice(w.choices[i]);
-            return w2.Evaluate(Run.instance.stageRng.nextNormalizedFloat);
+            var v2 = w2.Evaluate(Run.instance.stageRng.nextNormalizedFloat); VariantsRolled[stage].Add(v2);
+            return v2;
         }
         public static Variant GetVariant(string stage, string name) => Variants.TryFind(x => x.Stages.Contains(stage) && x.Name.ToLower() == name.ToLower()) ?? Vanilla;
         public static Variant Vanilla => Variants.Find(x => x.Stages.Length == 0 && x.Name == "Vanilla");
