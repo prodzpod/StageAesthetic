@@ -56,15 +56,16 @@ namespace StageAesthetic.Variants
         public static Variant GetVariant(string stage, bool loop = false) 
         {
             WeightedSelection<Variant> w = new();
+            int c = 0;
             foreach (var v in Variants)
             {
                 if (!v.Stages.Contains(stage)) continue;
                 var weight = loop ? v.LoopWeight.Value : v.PreLoopWeight.Value;
-                if (weight <= 0) continue; w.AddChoice(v, weight);
+                if (weight <= 0) continue; c++; w.AddChoice(v, weight);
             }
-            if (LoopVariantEnabled() || w.choices.All(x => x.weight == 0)) return Vanilla;
+            if (LoopVariantEnabled() || c == 0) return Vanilla;
             if (!Hooks.AvoidDuplicateVariants.Value) return w.Evaluate(Run.instance.stageRng.nextNormalizedFloat);
-            if (!VariantsRolled.ContainsKey(stage) || VariantsRolled[stage].Count == w.choices.Length) VariantsRolled[stage] = [];
+            if (!VariantsRolled.ContainsKey(stage) || VariantsRolled[stage].Count >= c) VariantsRolled[stage] = [];
             WeightedSelection<Variant> w2 = new();
             for (int i = 0; i < w.Count; i++) if (!VariantsRolled[stage].Contains(w.choices[i].value)) w2.AddChoice(w.choices[i]);
             var v2 = w2.Evaluate(Run.instance.stageRng.nextNormalizedFloat); VariantsRolled[stage].Add(v2);

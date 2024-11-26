@@ -133,6 +133,7 @@ namespace StageAesthetic.Variants.Stage5.SkyMeadow
                     GameObject ret;
                     if (Rocks.ContainsKey(rock)) ret = Rocks[rock];
                     else { ret = UnityEngine.Object.Instantiate(rock); Rocks[rock] = ret; }
+                    if (!ret) return rock;
                     var mr = ret.transform.Find("Model").GetComponent<MeshRenderer>();
                     Assets.TryMeshReplace(mr, MaulingRockOverride);
                     return ret;

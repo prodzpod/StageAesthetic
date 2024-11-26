@@ -1,3 +1,25 @@
+# 1.1.8 Patch Notes
+- risk of options configs work
+- added r2api.prefab and miscfixes to dependency
+- rock texture overrides have better nullcheck
+
+# 1.1.7 Patch Notes
+- Not sure where exactly you want bug reports but here are all of the ones @lost_warrior have found:
+- Distant Roost:
+    - Abyssal (Grass/Ground is not abyssal colored like original, Not sure if intended)
+    - Night (Incorrect Lighting, Saw this one mentioned)
+    - Abyssal and Night will never get rolled for Distant Roost 1 (the original may have been like this?)
+    - Void will never get rolled for Distant Roost 2 (the original may have been like this?)
+- Aphelian Sanctuary:
+    - Abyssal  (Not Abyssal Textured like original, not sure if intended)
+- Abyssal Depths:
+    - Orange (Blue Fog, Not sure if intended)
+- Commencement:
+    - Crimson (Looks off, Pretty sure I saw this one mentioned already)
+    - Does not show variant name next to stage name when arriving
+- General:
+    - Changing "Enable" to "Disable" is not enough to disable a variant. (at least when using the ones for Roost didn't test others) One would also need to set the weight to 0.
+
 # 1.1.6 Patch Notes
 - no longer throws errors when there is no variants
 

@@ -1,17 +1,10 @@
 ﻿using BepInEx.Configuration;
-using HarmonyLib;
-using Mono.Cecil.Cil;
-using MonoMod.Cil;
-using R2API;
 using RoR2;
 using RoR2.UI;
 using StageAesthetic.Variants;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.SceneManagement;
 
