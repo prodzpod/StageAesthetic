@@ -1,16 +1,19 @@
 ﻿using BepInEx.Configuration;
+using R2API.Networking;
+using R2API.Networking.Interfaces;
 using RoR2;
 using RoR2.UI;
 using StageAesthetic.Variants;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.SceneManagement;
 
 namespace StageAesthetic
 {
-    public class Hooks
+    public class Hooks : NetworkBehaviour
     {
         public static Dictionary<string, string> SceneNames = [];
         public static Dictionary<string, Stage> SceneStage = [];
@@ -29,6 +32,7 @@ namespace StageAesthetic
             AvoidDuplicateVariants = ConfigManager.Bind("General", "Avoid Duplicate Variants", true, "Remove the variant from the pool once it is rolled until all variant for that stage is rolled.");
             Variants.Stage5.SkyMeadow.Common.AddHook();
             foreach (var t in Util.FindAllDerivedTypes<Variant>()) t.GetConstructor([]).Invoke(null);
+            NetworkingAPI.RegisterMessageType<HookClient>();
         }
         public static void PostInit()
         {
@@ -49,7 +53,7 @@ namespace StageAesthetic
         }
         public static void RollVariant(On.RoR2.SceneDirector.orig_Start orig, SceneDirector self)
         {
-            var v = RollVariantInternal();
+            if (NetworkServer.active) RollVariantInternal();
             orig(self);
         }
         public static Variant RollVariantInternal(string forceScene = "", string forceVariant = "")
@@ -79,6 +83,7 @@ namespace StageAesthetic
             var colorGrading = volume.profile.GetSetting<ColorGrading>() ?? volume.profile.AddSettings<ColorGrading>();
             var loop = (Run.instance?.loopClearCount ?? 0) > 0;
             var v = string.IsNullOrWhiteSpace(forceVariant) ? Variant.GetVariant(sceneName, loop) : Variant.GetVariant(sceneName, forceVariant);
+            if (NetworkServer.active) new HookClient(v.Name).Send(NetworkDestination.Clients);
             if (string.IsNullOrWhiteSpace(forceVariant))
             {
                 currentVariantName = v.Name;
@@ -102,6 +107,14 @@ namespace StageAesthetic
             if (volume && volume.isActiveAndEnabled) return volume;
             if (alt) return alt.GetComponent<PostProcessVolume>();
             return null;
+        }
+        public class HookClient(string variant) : INetMessage
+        {
+            public HookClient() : this("") { }
+            public string variant = variant;
+            public void Serialize(NetworkWriter writer) { writer.Write(variant); }
+            public void Deserialize(NetworkReader reader) { variant = reader.ReadString(); }
+            public void OnReceived() { if (!string.IsNullOrWhiteSpace(variant) && !NetworkServer.active) RollVariantInternal(SceneCatalog.currentSceneDef.cachedName, variant); }
         }
     }
 }

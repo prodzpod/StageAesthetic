@@ -184,9 +184,9 @@ namespace StageAesthetic
             public float speedMax = speedMax;
             public float angleMin = angle;
             public float angleMax = angle;
-            public readonly float Magnitude => Run.instance.runRNG.RangeFloat(magnitudeMin, magnitudeMax);
-            public readonly float Speed => Run.instance.runRNG.RangeFloat(speedMin, speedMax);
-            public readonly float Angle => Run.instance.runRNG.RangeFloat(angleMin, angleMax);
+            public readonly float Magnitude => (Run.instance?.runRNG ?? RoR2Application.rng).RangeFloat(magnitudeMin, magnitudeMax);
+            public readonly float Speed => (Run.instance?.runRNG ?? RoR2Application.rng).RangeFloat(speedMin, speedMax);
+            public readonly float Angle => (Run.instance?.runRNG ?? RoR2Application.rng).RangeFloat(angleMin, angleMax);
         }
     }
     public enum SoundType

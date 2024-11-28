@@ -56,6 +56,9 @@
 	  <Reference Include="R2API">
 	    <HintPath>..\..\libs\R2API-nstrip.dll</HintPath>
 	  </Reference>
+	  <Reference Include="R2API.Networking">
+	    <HintPath>..\..\libs\R2API.Networking-nstrip.dll</HintPath>
+	  </Reference>
 	  <Reference Include="R2API.SceneAsset">
 	    <HintPath>..\..\libs\R2API.SceneAsset-nstrip.dll</HintPath>
 	  </Reference>

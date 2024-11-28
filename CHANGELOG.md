@@ -1,3 +1,6 @@
+# 1.1.9 Patch Notes
+- works in multiplayer now
+
 # 1.1.8 Patch Notes
 - risk of options configs work
 - added r2api.prefab and miscfixes to dependency
