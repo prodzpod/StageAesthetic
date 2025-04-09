@@ -47,7 +47,7 @@ namespace StageAesthetic
             switch (config)
             {
                 case ConfigEntry<bool> _bc: option = new CheckBoxOption(_bc, new CheckBoxConfig() { restartRequired = false }); break;
-                case ConfigEntry<float> _fc: option = new SliderOption(_fc, new SliderConfig() { min = 0, max = 10, restartRequired = false, FormatString = "{0:2}" }); break;
+                case ConfigEntry<float> _fc: option = new SliderOption(_fc, new SliderConfig() { min = 0, max = 10, restartRequired = false, FormatString = "{0}" }); break;
                 case ConfigEntry<EnableConfig> _wc: option = new ChoiceOption(_wc, new ChoiceConfig() { restartRequired = false }); break;
                 default: Main.Log.LogWarning("Undefined Config Type " + typeof(T).Name + ", not added to ROO"); break;
             }

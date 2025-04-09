@@ -1,6 +1,6 @@
 {
   "name": "StageAesthetic",
-  "version_number": "1.1.9",
+  "version_number": "1.1.10",
   "website_url": "https://github.com/prodzpod/StageAesthetic",
   "description": "Adds randomly-selected color schemes to stages.",
   "dependencies": [

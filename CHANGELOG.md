@@ -1,3 +1,6 @@
+# 1.1.10 Patch Notes
+- "roo number" has been fixed, whatever that means
+
 # 1.1.9 Patch Notes
 - works in multiplayer now
 
